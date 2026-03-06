@@ -1,0 +1,110 @@
+// Prisma schema for Bitpan E-commerce
+// Uses Neon Postgres - set DATABASE_URL or POSTGRES_PRISMA_URL in .env
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  handle        String   @unique
+  title         String
+  vendor        String?  @default("")
+  price         Decimal  @db.Decimal(10, 2)
+  tags          Json?    // string[]
+  images        Json     // { src, width, height, alt }[]
+  featuredImage Json     // { src, width, height, alt }
+  options       Json     // { name, optionValues }[]
+  selectedOptions Json?  // { name, value }[]
+  description   String?  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  collections   ProductCollection[]
+  cartItems     CartItem[]
+  orderItems    OrderItem[]
+}
+
+model Collection {
+  id          String   @id @default(cuid())
+  handle      String   @unique
+  title       String
+  description String?  @db.Text
+  image       String?
+  theme       String?   // 'fashion' | 'hijab' | 'skincare'
+  updatedAt   DateTime @updatedAt
+
+  products ProductCollection[]
+}
+
+model ProductCollection {
+  productId    Int
+  collectionId String
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  collection   Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
+  @@id([productId, collectionId])
+}
+
+model Cart {
+  id        String   @id @default(cuid())
+  sessionId String   @unique // cookie-based anonymous cart
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items CartItem[]
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  cartId    String
+  productId Int
+  quantity  Int      @default(1)
+  price     Decimal  @db.Decimal(10, 2) // price at time of add
+  options   Json?    // { size?, color?, ... }
+  createdAt DateTime @default(now())
+
+  cart    Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([cartId])
+}
+
+model Order {
+  id               String   @id @default(cuid())
+  number           String   @unique // display number e.g. "4376"
+  sessionId        String   // so we can list orders by session
+  email            String
+  status           String   @default("pending") // pending, confirmed, shipped, delivered
+  shippingAddress  Json?    // { firstName, lastName, address, city, country, region, postalCode, phone }
+  subtotal         Decimal  @db.Decimal(10, 2)
+  shipping         Decimal  @db.Decimal(10, 2) @default(0)
+  tax              Decimal  @db.Decimal(10, 2) @default(0)
+  total            Decimal  @db.Decimal(10, 2)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id              Int      @id @default(autoincrement())
+  orderId         String
+  productId       Int
+  quantity        Int
+  price           Decimal  @db.Decimal(10, 2)
+  options         Json?    // { size?, color? }
+  productSnapshot Json     // { name, handle, imageSrc, imageAlt } for display
+  createdAt       DateTime @default(now())
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@index([orderId])
+}

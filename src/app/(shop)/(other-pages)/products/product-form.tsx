@@ -11,14 +11,16 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import { ShoppingBag03Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import clsx from 'clsx'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 export function ProductForm({ product }: { product: TProductItem }) {
+  const router = useRouter()
   const { open: openAside } = useAside()
-  const { options, selected_options, collections, title, price } = product
+  const { options, selected_options, collections, title, price, id: productId } = product
   const status = 'in stock'
 
-  const collection = collections[0]
+  const collection = collections?.[0]
   const currentColor = selected_options.filter((option) => option.name === 'Color')?.[0].value
 
   // NOTE: this for demo ...
@@ -28,11 +30,9 @@ export function ProductForm({ product }: { product: TProductItem }) {
 
   const breadcrumbs = [
     { id: 1, name: 'Home', href: '/' },
-    {
-      id: 2,
-      name: collection.title,
-      href: '/collections/all',
-    },
+    ...(collection
+      ? [{ id: 2, name: collection.title, href: '/collections/all' } as const]
+      : []),
   ]
   //
   return (
@@ -130,7 +130,23 @@ export function ProductForm({ product }: { product: TProductItem }) {
           <InputNumber className="gap-x-5" label="Qty" defaultValue={quantity} onChange={setQuantity} />
           <ButtonLargeWithIcon
             icon={<HugeiconsIcon icon={ShoppingBag03Icon} size={20} color="currentColor" strokeWidth={1.5} />}
-            onClick={() => openAside('cart')}
+            onClick={async () => {
+              const optionsBody: { size?: string; color?: string } = {}
+              stateSelectedOption.forEach((opt) => {
+                if (opt.name === 'Size') optionsBody.size = opt.value
+                if (opt.name === 'Color') optionsBody.color = opt.value
+                if (opt.name === 'Pack Size') optionsBody.size = opt.value
+              })
+              const res = await fetch('/api/cart', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ productId, quantity, options: optionsBody }),
+              })
+              if (res.ok) {
+                router.refresh()
+                openAside('cart')
+              }
+            }}
           >
             Add to cart
           </ButtonLargeWithIcon>
