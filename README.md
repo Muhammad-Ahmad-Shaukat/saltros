@@ -1,7 +1,7 @@
  # Bitpan Demo
  
 
-To run the Bitpan demo, first install the npm dependencies:
+To run the Bitpan demo, first install the npm depende ncies: 
 
 ```bash
 npm install
