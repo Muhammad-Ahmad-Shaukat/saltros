@@ -115,7 +115,7 @@ export function ProductForm({ product }: { product: TProductItem }) {
                           }
                         }}
                       >
-                        <ProductOptionSwatch swatch={swatch} name={name} isSelected={selected} inStock={inStock} />
+                        <ProductOptionSwatch swatch={swatch as TSwatch | null | undefined} name={name} isSelected={selected} inStock={inStock} />
                       </div>
                     )
                   })}
