@@ -4,7 +4,7 @@
 To run the Bitpan demo, first install the npm depende ncies: 
 
 ```bash
-npm install
+npm install 
 ```
 
 Next, run the development server:
