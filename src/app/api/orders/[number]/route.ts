@@ -33,7 +33,7 @@ export async function GET(
         imageAlt: string
       }
       const opt = (item.options as { size?: string; color?: string }) ?? {}
-      const addr = (order.shippingAddress as { firstName?: string; lastName?: string; address?: string; city?: string; country?: string; region?: string }) ?? {}
+      const addr = (order.shippingAddress as { firstName?: string; lastName?: string; address?: string; city?: string; country?: string; region?: string; postalCode?: string; phone?: string }) ?? {}
       const addressLines = [
         [addr.firstName, addr.lastName].filter(Boolean).join(' '),
         addr.address,
