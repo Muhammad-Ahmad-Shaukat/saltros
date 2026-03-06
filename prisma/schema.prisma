@@ -81,6 +81,7 @@ model User {
   email        String   @unique
   name         String?
   passwordHash String   @map("password_hash")
+  address      Json?    // { firstName, lastName, address, city, country, region, postalCode, phone }
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }

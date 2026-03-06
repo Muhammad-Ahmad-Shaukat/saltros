@@ -7,6 +7,7 @@ export {
   getCartProducts,
   getOrders,
   getOrder,
+  getUserAddress,
 } from '@/lib/data-db'
 
 export { getCountries } from '@/lib/countries'

@@ -12,10 +12,20 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import DeliveryRadio from './delivery-radio'
 
-export function CheckoutForm({ products }: { products: CartProductItemProps[] }) {
+export function CheckoutForm({
+  products,
+  initialAddress,
+  initialEmail,
+}: {
+  products: CartProductItemProps[]
+  initialAddress?: any
+  initialEmail?: string
+}) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  const addr = initialAddress ?? {}
 
   const subtotal = products.reduce((sum, p) => {
     const match = p.price.replace(/[^0-9.]/g, '')
@@ -74,12 +84,22 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
     <form onSubmit={handleSubmit} className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16 2xl:gap-x-20">
       <div>
         <div>
-          <Heading fontSize="text-2xl font-medium text-zinc-950" level={3}>
-            <span data-slot="italic">Contact</span> information
-          </Heading>
+          <div className="flex items-center justify-between">
+            <Heading fontSize="text-2xl font-medium text-zinc-950" level={3}>
+              <span data-slot="italic">Contact</span> information
+            </Heading>
+            {!initialEmail && (
+              <p className="text-sm text-zinc-500">
+                Already have an account?{' '}
+                <Link href="/login" className="font-medium text-zinc-900 underline">
+                  Log in
+                </Link>
+              </p>
+            )}
+          </div>
           <Field className="mt-10">
             <Label>Email address</Label>
-            <Input type="email" name="email" required />
+            <Input type="email" name="email" defaultValue={initialEmail} required />
             <Description>We'll send you a confirmation email when your order has shipped.</Description>
           </Field>
         </div>
@@ -91,11 +111,11 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
           <div className="mt-10 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
             <Field>
               <Label>First name</Label>
-              <Input type="text" name="first-name" />
+              <Input type="text" name="first-name" defaultValue={addr.firstName} />
             </Field>
             <Field>
               <Label>Last name</Label>
-              <Input type="text" name="last-name" />
+              <Input type="text" name="last-name" defaultValue={addr.lastName} />
             </Field>
             <Field className="sm:col-span-2">
               <Label>Company</Label>
@@ -103,7 +123,7 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
             </Field>
             <Field className="sm:col-span-2">
               <Label>Address</Label>
-              <Input type="text" name="address" />
+              <Input type="text" name="address" defaultValue={addr.address} />
             </Field>
             <Field className="sm:col-span-2">
               <Label>Apartment, suite, etc.</Label>
@@ -111,11 +131,11 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
             </Field>
             <Field>
               <Label>City</Label>
-              <Input type="text" name="city" />
+              <Input type="text" name="city" defaultValue={addr.city} />
             </Field>
             <Field>
               <Label>Country</Label>
-              <Select className="mt-3 sm:col-span-2 sm:mt-0" name="country">
+              <Select className="mt-3 sm:col-span-2 sm:mt-0" name="country" defaultValue={addr.country || 'United States'}>
                 <option>Canada</option>
                 <option>Mexico</option>
                 <option>United States</option>
@@ -123,15 +143,15 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
             </Field>
             <Field>
               <Label>State / Province</Label>
-              <Input type="text" name="region" />
+              <Input type="text" name="region" defaultValue={addr.region} />
             </Field>
             <Field>
               <Label>Postal code</Label>
-              <Input type="text" name="postal-code" />
+              <Input type="text" name="postal-code" defaultValue={addr.postalCode} />
             </Field>
             <Field className="sm:col-span-2">
               <Label>Phone</Label>
-              <Input type="tel" name="phone" />
+              <Input type="tel" name="phone" defaultValue={addr.phone} />
             </Field>
           </div>
         </div>
@@ -149,20 +169,38 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
           <Heading fontSize="text-2xl font-medium text-zinc-950" level={3}>
             <span data-slot="italic">Payment</span> method
           </Heading>
-          <Fieldset className="mt-4">
+          <Fieldset className="mt-6">
             <legend className="sr-only">Payment type</legend>
             <RadioGroup
               name="payment-type"
               defaultValue="Cash on Delivery"
-              className="space-y-4 sm:flex sm:flex-col sm:space-y-3"
+              className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4"
             >
-              <Field className="flex items-center gap-x-3">
-                <Radio value="Cash on Delivery" />
-                <Label>Cash on Delivery — Pay when you receive your order</Label>
+              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-[:checked]:border-zinc-950 has-[:checked]:ring-2 has-[:checked]:ring-zinc-950">
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="text-sm">
+                      <Label className="font-medium text-zinc-900">Cash on Delivery</Label>
+                      <Description className="text-zinc-500">Pay when you receive</Description>
+                    </div>
+                  </div>
+                  <Radio value="Cash on Delivery" className="h-4 w-4 text-zinc-950" />
+                </div>
               </Field>
-              <Field className="flex items-center gap-x-3">
-                <Radio value="Stripe" />
-                <Label>Pay by card (Stripe) — Secure payment on Stripe</Label>
+
+              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-[:checked]:border-zinc-950 has-[:checked]:ring-2 has-[:checked]:ring-zinc-950">
+                <div className="flex w-full items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="text-sm">
+                      <Label className="font-medium text-zinc-900">Stripe (Card)</Label>
+                      <Description className="text-zinc-500">Secure card payment</Description>
+                    </div>
+                  </div>
+                  <Radio value="Stripe" className="h-4 w-4 text-zinc-950" />
+                </div>
+                <div className="absolute top-2 right-10 flex space-x-1 opacity-50">
+                   <svg className="h-4 w-auto" viewBox="0 0 38 24" fill="none"><rect width="38" height="24" rx="4" fill="#252525"/><path d="M12 11h2v2h-2v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2zm4 0h2v2h-2v-2z" fill="#fff"/></svg>
+                </div>
               </Field>
             </RadioGroup>
           </Fieldset>

@@ -129,3 +129,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Failed to add to cart' }, { status: 500 })
   }
 }
+
+// DELETE /api/cart - clear cart
+export async function DELETE() {
+  try {
+    const cartId = await getCartId()
+    if (cartId) {
+      await prisma.cartItem.deleteMany({ where: { cartId } })
+    }
+    return NextResponse.json({ ok: true })
+  } catch (e) {
+    console.error('DELETE /api/cart', e)
+    return NextResponse.json({ error: 'Failed to clear cart' }, { status: 500 })
+  }
+}
+

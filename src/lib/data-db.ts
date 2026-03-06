@@ -247,3 +247,11 @@ export async function getOrder(number: string) {
   const orders = await getOrders()
   return orders.find((o) => o.number === number) ?? null
 }
+
+export async function getUserAddress(email: string) {
+  const user = await prisma.user.findUnique({
+    where: { email },
+    select: { address: true },
+  })
+  return user?.address ?? null
+}

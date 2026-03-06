@@ -49,14 +49,7 @@ const mega_menus = [
   },
 ]
 
-const demo_checkout_menu = [
-  { name: 'Login / Sign up', href: '/login' },
-  { name: 'Cart', href: '/cart' },
-  { name: 'Checkout', href: '/checkout' },
-  { name: 'Order successful', href: '/order-successful' },
-  { name: 'Orders', href: '/orders' },
-  { name: 'Orders Detail', href: '/orders/4657' },
-]
+
 
 interface HeaderProps {
   className?: string
@@ -120,7 +113,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
 
             {/* TEXT LINKS */}
             <TextLink href="/collections/page-style-2/all">Shop</TextLink>
-            <DropdownMenuPopover dropdownMenu={demo_checkout_menu}>Checkout</DropdownMenuPopover>
+            <TextLink href="/checkout">Checkout</TextLink>
           </div>
 
           {/* RIGHT ICON BUTTONS */}

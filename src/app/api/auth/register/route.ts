@@ -6,7 +6,12 @@ import bcrypt from 'bcryptjs'
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { email, name, password } = body as { email?: string; name?: string; password?: string }
+    const { email, name, password, address } = body as {
+      email?: string
+      name?: string
+      password?: string
+      address?: any
+    }
     if (!email || typeof email !== 'string' || !password || typeof password !== 'string') {
       return NextResponse.json({ error: 'Email and password required' }, { status: 400 })
     }
@@ -24,6 +29,7 @@ export async function POST(request: Request) {
         email: trimmedEmail,
         name: (name as string)?.trim() || null,
         passwordHash,
+        address: address || null,
       },
     })
     await createSession({ userId: user.id, email: user.email, name: user.name ?? undefined })

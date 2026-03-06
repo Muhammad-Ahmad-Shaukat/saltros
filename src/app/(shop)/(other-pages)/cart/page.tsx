@@ -8,6 +8,7 @@ import { HelpCircleIcon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Metadata } from 'next'
 import { CartItemRow } from './cart-item-row'
+import { ClearCartButton } from './clear-cart-button'
 
 export const metadata: Metadata = {
   title: 'Shopping Cart',
@@ -32,9 +33,12 @@ export default async function Page() {
   return (
     <div className="container">
       <div className="mx-auto max-w-7xl pt-16">
-        <Heading level={1}>
-          Shopping <span data-slot="italic">Cart</span>
-        </Heading>
+        <div className="flex items-center justify-between">
+          <Heading level={1}>
+            Shopping <span data-slot="italic">Cart</span>
+          </Heading>
+          {products.length > 0 && <ClearCartButton />}
+        </div>
         <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-14">
           <section aria-labelledby="cart-heading" className="lg:col-span-7">
             <h2 id="cart-heading" className="sr-only">
