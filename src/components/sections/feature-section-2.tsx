@@ -58,10 +58,10 @@ const FeatureSection2 = ({
     <div className={clsx('flex flex-col justify-between gap-8 lg:flex-row', className)}>
       <div className="relative flex-1/2 2xl:flex-3/7">
         <Image
-          src={image.src}
-          width={image.width}
-          height={image.height}
-          alt={image.alt}
+          src={image?.src ?? '/images/placeholder.svg'}
+          width={image?.width ?? 800}
+          height={image?.height ?? 600}
+          alt={image?.alt ?? ''}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
           priority
         />

@@ -21,9 +21,9 @@ export default function ProductCardHorizontal({ product, className, imageRatio =
   const { title, price, selected_options, featured_image, handle, images } = product
 
   // find the product color
-  const color = selected_options.find((option) => option.name === 'Color')?.value
+  const color = selected_options?.find((option) => option.name === 'Color')?.value
   // // find the product size
-  const size = selected_options.find((option) => option.name === 'Size')?.value
+  const size = selected_options?.find((option) => option.name === 'Size')?.value
 
   return (
     <div className={clsx('group/prd relative flex w-full justify-between', className)}>
@@ -31,7 +31,7 @@ export default function ProductCardHorizontal({ product, className, imageRatio =
       <div className="flex gap-4">
         <div className={clsx('relative w-24', imageRatio)}>
           <Image
-            src={images[0] || '/placeholder.webp'}
+            src={images[0]?.src ?? (featured_image as { src?: string })?.src ?? '/images/placeholder.svg'}
             alt={title}
             fill
             className="z-0 rounded-lg object-cover"
@@ -46,7 +46,7 @@ export default function ProductCardHorizontal({ product, className, imageRatio =
             {title}
           </TextLink>
           <Text className="mt-0.5 text-xs text-zinc-500">{color ?? size ?? ''}</Text>
-          <Text className="mt-auto leading-tight sm:leading-6">${price.toFixed(2)}</Text>
+          <Text className="mt-auto leading-tight sm:leading-6">${Number(price).toFixed(2)}</Text>
         </div>
       </div>
 

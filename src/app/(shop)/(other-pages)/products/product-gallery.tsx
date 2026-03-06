@@ -36,7 +36,7 @@ export function ProductGallery({ media, className }: { media: TImage[]; classNam
       <div className={`swimlane hidden-scrollbar lg:grid-flow-row lg:grid-cols-2 lg:overflow-x-hidden ${className}`}>
         {media.map((image, i) => {
           const isFullWidth = i % 3 === 0
-
+          const src = image?.src ?? '/images/placeholder.svg'
           return (
             <div
               className={clsx(
@@ -51,8 +51,8 @@ export function ProductGallery({ media, className }: { media: TImage[]; classNam
               aria-hidden
             >
               <Image
-                src={image.src}
-                alt={image.alt || 'Product image'}
+                src={src}
+                alt={image?.alt || 'Product image'}
                 sizes={isFullWidth ? '(max-width: 1024px) 24rem, 90vw' : '(max-width: 1024px) 24rem, 40vw'}
                 fill
                 className="h-full w-full object-cover"
@@ -121,15 +121,16 @@ function ModalImageGallery({ media, indexActive }: { media: TImage[]; indexActiv
     <div className="grid gap-5">
       {media.map((image, i) => {
         if (!image) return null
+        const src = image.src ?? '/images/placeholder.svg'
         return (
           <div key={'image' + i} id={'image' + i}>
             <Image
-              src={image.src}
+              src={src}
               alt={image.alt || 'Product image'}
               sizes="(min-width: 48em) 60vw, 90vw"
               className="mx-auto"
-              width={image.width}
-              height={image.height}
+              width={image.width ?? 800}
+              height={image.height ?? 600}
             />
           </div>
         )

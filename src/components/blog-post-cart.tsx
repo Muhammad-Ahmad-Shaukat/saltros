@@ -21,10 +21,10 @@ const BlogPostCart = ({ post, className }: BlogPostCartProps) => {
   return (
     <article key={post.id} className={clsx('relative flex flex-col items-start justify-between', className)}>
       <div className="relative aspect-square w-full">
-        {post.featuredImage.src && (
+        {post.featuredImage?.src && (
           <Image
             alt={post.featuredImage.alt || post.title}
-            src={post.featuredImage}
+            src={post.featuredImage.src}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

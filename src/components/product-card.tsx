@@ -14,25 +14,25 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
   const { id, title, price, featured_image, handle, images, tags, vendor, selected_options } = product
 
   // find the product color
-  const color = selected_options.find((option) => option.name === 'Color')?.value
+  const color = selected_options?.find((option) => option.name === 'Color')?.value
   // // find the product size
-  const size = selected_options.find((option) => option.name === 'Size')?.value
+  const size = selected_options?.find((option) => option.name === 'Size')?.value
 
   return (
     <div className={clsx('group/prd relative w-full', className)}>
       {/* Product Image */}
       <div className={clsx('relative w-full', imageRatio)}>
         <Image
-          src={images[0] || '/placeholder.webp'}
+          src={images[0]?.src ?? (featured_image as { src?: string })?.src ?? '/images/placeholder.svg'}
           alt={title}
           fill
           className="z-0 rounded-lg object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
           priority
         />
-        {images[1].src ? (
+        {images[1]?.src ? (
           <Image
-            src={images[1] || '/placeholder.webp'}
+            src={images[1].src}
             alt={title}
             fill
             className="z-0 rounded-lg object-cover opacity-0 transition-opacity duration-300 group-hover/prd:opacity-100"
@@ -60,7 +60,7 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
             <span className="absolute inset-0"></span>
             {title}
           </TextLink>
-          <Text className="">${price.toFixed(2)}</Text>
+          <Text className="">${Number(price).toFixed(2)}</Text>
         </div>
         <Text className="mt-0.5 text-xs text-zinc-500">{color ?? size ?? ''}</Text>
       </div>

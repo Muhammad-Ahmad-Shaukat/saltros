@@ -44,8 +44,8 @@ export function ProductGallery2({ media, className }: { media: TImage[]; classNa
               }}
             >
               <Image
-                src={image.src}
-                alt={image.alt || 'Product images'}
+                src={image?.src ?? '/images/placeholder.svg'}
+                alt={image?.alt || 'Product images'}
                 sizes={'(min-width: 48em) 30vw, 90vw'}
                 fill
                 className="h-full w-full object-cover"
@@ -117,12 +117,12 @@ function ModalImageGallery({ media, indexActive }: { media: TImage[]; indexActiv
         return (
           <div key={i + '--image'} id={'image' + i}>
             <Image
-              src={image.src}
-              alt={image.alt || 'Product image'}
+              src={image?.src ?? '/images/placeholder.svg'}
+              alt={image?.alt || 'Product image'}
               sizes="(min-width: 48em) 60vw, 90vw"
               className="mx-auto"
-              width={image.width}
-              height={image.height}
+              width={image?.width ?? 800}
+              height={image?.height ?? 600}
             />
           </div>
         )

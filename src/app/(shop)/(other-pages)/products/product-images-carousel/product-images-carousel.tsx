@@ -43,8 +43,8 @@ const ProductImageCarousel: React.FC<PropType> = (props) => {
             <div className="embla__slide basis-full" key={index + '--image'}>
               <div className="relative aspect-3/4 w-full">
                 <Image
-                  src={image.src}
-                  alt={image.alt || 'Product images'}
+                  src={image?.src ?? '/images/placeholder.svg'}
+                  alt={image?.alt || 'Product images'}
                   sizes="(max-width: 768px) 100vw, 50vw"
                   fill
                   className="h-full w-full cursor-ew-resize object-cover"
@@ -77,8 +77,8 @@ const ProductImageCarousel: React.FC<PropType> = (props) => {
               <div className="relative aspect-3/4">
                 <span className="sr-only">Go to slide {index + 1}</span>
                 <Image
-                  src={slides[index].src}
-                  alt={slides[index].alt || 'Product images'}
+                  src={slides[index]?.src ?? '/images/placeholder.svg'}
+                  alt={slides[index]?.alt || 'Product images'}
                   sizes={'100px'}
                   fill
                   className="h-full w-full object-cover"
