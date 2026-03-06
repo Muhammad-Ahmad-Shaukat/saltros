@@ -1,5 +1,5 @@
 import { Logo } from '@/app/logo'
-import { getSkincareCollections } from '@/data'
+import { getCartProducts, getSkincareCollections } from '@/data'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { TextLink } from '../text'
@@ -65,8 +65,9 @@ interface HeaderProps {
 }
 
 const Header = async ({ className, hasBottomBorder = true, variant = 'default', megamenuVariant }: HeaderProps) => {
-  const collections = await getSkincareCollections()
+  const [collections, cartProducts] = await Promise.all([getSkincareCollections(), getCartProducts()])
   const featuredCollections = collections.slice(0, 3) // Get 3 collections
+  const cartCount = cartProducts.length
 
   return (
     <header
@@ -129,7 +130,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
             <UserIconPopover />
 
             {/* CART */}
-            <CartIconBtn />
+            <CartIconBtn cartCount={cartCount} />
           </div>
         </div>
       </nav>

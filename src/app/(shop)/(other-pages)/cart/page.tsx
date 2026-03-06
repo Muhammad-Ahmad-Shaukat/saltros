@@ -40,11 +40,20 @@ export default async function Page() {
             <h2 id="cart-heading" className="sr-only">
               Items in your shopping cart
             </h2>
-            <ul role="list" className="divide-y divide-zinc-900/10 border-t border-b border-zinc-900/10">
-              {products.map((product) => (
-                <CartItemRow key={product.id} product={product} />
-              ))}
-            </ul>
+            {products.length === 0 ? (
+              <div className="rounded-lg border border-zinc-900/10 px-4 py-12 text-center">
+                <Text className="text-zinc-500">Your cart is empty.</Text>
+                <div className="mt-4">
+                  <Button href="/collections/all">Continue shopping</Button>
+                </div>
+              </div>
+            ) : (
+              <ul role="list" className="divide-y divide-zinc-900/10 border-t border-b border-zinc-900/10">
+                {products.map((product) => (
+                  <CartItemRow key={product.id} product={product} />
+                ))}
+              </ul>
+            )}
           </section>
 
           <section
