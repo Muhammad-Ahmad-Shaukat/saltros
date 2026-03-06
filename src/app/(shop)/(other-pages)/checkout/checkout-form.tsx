@@ -1,21 +1,18 @@
 'use client'
 
-import { CartProductItem } from '@/components/aside-sidebar-cart'
+import { CartProductItem, type CartProductItemProps } from '@/components/cart-product-item'
 import { Button } from '@/components/button'
 import { Description, Field, Fieldset, Label } from '@/components/fieldset'
 import { Heading } from '@/components/heading'
 import { Input } from '@/components/input'
 import { Radio, RadioGroup } from '@/components/radio'
 import { Select } from '@/components/select'
-import type { getCartProducts } from '@/data'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import DeliveryRadio from './delivery-radio'
 
-type CartProduct = Awaited<ReturnType<typeof getCartProducts>>[number]
-
-export function CheckoutForm({ products }: { products: CartProduct[] }) {
+export function CheckoutForm({ products }: { products: CartProductItemProps[] }) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)

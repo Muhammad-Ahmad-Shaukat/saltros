@@ -1,17 +1,14 @@
 'use client'
 
-import { Button } from '@/components/button'
+import type { CartProductItemProps } from '@/components/cart-product-item'
 import { Link } from '@/components/link'
 import { Text } from '@/components/text'
-import type { getCartProducts } from '@/data'
 import { CheckIcon, ClockIcon, XMarkIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
-type CartProduct = Awaited<ReturnType<typeof getCartProducts>>[number]
-
-export function CartItemRow({ product }: { product: CartProduct }) {
+export function CartItemRow({ product }: { product: CartProductItemProps }) {
   const router = useRouter()
   const [quantity, setQuantity] = useState(product.quantity)
   const [removing, setRemoving] = useState(false)
@@ -97,12 +94,12 @@ export function CartItemRow({ product }: { product: CartProduct }) {
         </div>
 
         <div className="mt-4 flex items-center space-x-2 text-zinc-700">
-          {product.inStock ? (
+          {(product.inStock ?? true) ? (
             <CheckIcon aria-hidden="true" className="size-5 shrink-0 text-green-500" />
           ) : (
             <ClockIcon aria-hidden="true" className="size-5 shrink-0 text-zinc-300" />
           )}
-          <Text className="text-xs">{product.inStock ? 'In stock' : 'Ships in 3–4 weeks'}</Text>
+          <Text className="text-xs">{(product.inStock ?? true) ? 'In stock' : 'Ships in 3–4 weeks'}</Text>
         </div>
       </div>
     </li>
