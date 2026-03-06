@@ -1,5 +1,6 @@
 import { Logo } from '@/app/logo'
 import { getCartProducts, getSkincareCollections } from '@/data'
+import { getSession } from '@/lib/auth'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { TextLink } from '../text'
@@ -65,7 +66,11 @@ interface HeaderProps {
 }
 
 const Header = async ({ className, hasBottomBorder = true, variant = 'default', megamenuVariant }: HeaderProps) => {
-  const [collections, cartProducts] = await Promise.all([getSkincareCollections(), getCartProducts()])
+  const [collections, cartProducts, session] = await Promise.all([
+    getSkincareCollections(),
+    getCartProducts(),
+    getSession(),
+  ])
   const featuredCollections = collections.slice(0, 3) // Get 3 collections
   const cartCount = cartProducts.length
 
@@ -127,7 +132,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
             <SearchIconPopover />
 
             {/* USER - DROPDOWN */}
-            <UserIconPopover />
+            <UserIconPopover user={session ? { email: session.email, name: session.name } : null} />
 
             {/* CART */}
             <CartIconBtn cartCount={cartCount} />

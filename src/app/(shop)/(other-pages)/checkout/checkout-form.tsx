@@ -32,6 +32,7 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
     const form = e.currentTarget
     const formData = new FormData(form)
     const email = (formData.get('email') as string)?.trim() || 'guest@example.com'
+    const paymentMethod = (formData.get('payment-type') as string) || 'cash_on_delivery'
     const shippingAddress = {
       firstName: formData.get('first-name') || formData.get('fisrt-name'),
       lastName: formData.get('last-name'),
@@ -46,12 +47,20 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, shippingAddress }),
+        body: JSON.stringify({
+          email,
+          shippingAddress,
+          paymentMethod: paymentMethod === 'Stripe' ? 'stripe' : 'cash_on_delivery',
+        }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
         setError(data.error || 'Checkout failed')
         setLoading(false)
+        return
+      }
+      if (data.url) {
+        window.location.href = data.url
         return
       }
       router.push(`/order-successful?order=${data.orderNumber}`)
@@ -144,41 +153,19 @@ export function CheckoutForm({ products }: { products: CartProductItemProps[] })
             <legend className="sr-only">Payment type</legend>
             <RadioGroup
               name="payment-type"
-              defaultValue="PayPal"
-              className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10"
+              defaultValue="Cash on Delivery"
+              className="space-y-4 sm:flex sm:flex-col sm:space-y-3"
             >
               <Field className="flex items-center gap-x-3">
-                <Radio value="Credit" />
-                <Label>Credit card</Label>
+                <Radio value="Cash on Delivery" />
+                <Label>Cash on Delivery — Pay when you receive your order</Label>
               </Field>
               <Field className="flex items-center gap-x-3">
-                <Radio value="PayPal" />
-                <Label>PayPal</Label>
-              </Field>
-              <Field className="flex items-center gap-x-3">
-                <Radio value="eTransfer" />
-                <Label>eTransfer</Label>
+                <Radio value="Stripe" />
+                <Label>Pay by card (Stripe) — Secure payment on Stripe</Label>
               </Field>
             </RadioGroup>
           </Fieldset>
-          <div className="mt-8 grid grid-cols-4 gap-x-4 gap-y-6">
-            <Field className="col-span-4">
-              <Label>Card number</Label>
-              <Input type="text" name="card-number" autoComplete="cc-number" />
-            </Field>
-            <Field className="col-span-4">
-              <Label>Name on card</Label>
-              <Input type="text" name="name-on-card" autoComplete="cc-name" />
-            </Field>
-            <Field className="col-span-3">
-              <Label>Expiration date (MM/YY)</Label>
-              <Input type="text" name="expiration-date" autoComplete="cc-exp" />
-            </Field>
-            <Field>
-              <Label>CVC</Label>
-              <Input type="text" name="cvc" autoComplete="csc" />
-            </Field>
-          </div>
         </div>
       </div>
 

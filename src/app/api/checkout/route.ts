@@ -1,17 +1,23 @@
 import { prisma } from '@/lib/db'
 import { getCartId } from '@/lib/cart'
+import { getStripe } from '@/lib/stripe'
 import { NextResponse } from 'next/server'
 
-// POST /api/checkout - create order from cart, clear cart, return order number
-// Body: { email, shippingAddress: { firstName, lastName, address, city, country, region, postalCode, phone } }
+const BASE_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : process.env.NEXTAUTH_URL || 'http://localhost:3000'
+
+// POST /api/checkout - create order from cart; for cash_on_delivery clear cart and return order number; for stripe return Stripe checkout url
+// Body: { email, shippingAddress, paymentMethod: 'cash_on_delivery' | 'stripe' }
 export async function POST(request: Request) {
   try {
     const cartId = await getCartId()
     if (!cartId) {
       return NextResponse.json({ error: 'No cart' }, { status: 400 })
     }
-    const body = await request.json().catch(() => ({})) as {
+    const body = (await request.json().catch(() => ({}))) as {
       email?: string
+      paymentMethod?: 'cash_on_delivery' | 'stripe'
       shippingAddress?: {
         firstName?: string
         lastName?: string
@@ -25,6 +31,7 @@ export async function POST(request: Request) {
     }
     const email = body.email?.trim() || 'guest@example.com'
     const shippingAddress = body.shippingAddress ?? {}
+    const paymentMethod = body.paymentMethod ?? 'cash_on_delivery'
 
     const cart = await prisma.cart.findUnique({
       where: { id: cartId },
@@ -46,39 +53,79 @@ export async function POST(request: Request) {
     const existing = await prisma.order.findUnique({ where: { number: orderNumber } })
     const finalNumber = existing ? String(Math.floor(10000 + Math.random() * 90000)) : orderNumber
 
-    const order = await prisma.order.create({
-      data: {
-        number: finalNumber,
-        sessionId: cart.sessionId,
-        email,
-        status: 'confirmed',
-        shippingAddress: shippingAddress as object,
-        subtotal,
-        shipping,
-        tax,
-        total,
-        items: {
-          create: cart.items.map((item) => {
-            const p = item.product
-            const feat = p.featuredImage as { src: string; alt?: string }
-            return {
-              productId: p.id,
-              quantity: item.quantity,
-              price: item.price,
-              options: item.options as object,
-              productSnapshot: {
-                name: p.title,
-                handle: p.handle,
-                imageSrc: feat?.src ?? '/images/placeholder.svg',
-                imageAlt: feat?.alt ?? p.title,
-              },
-            }
-          }),
-        },
+    const createOrderData = {
+      number: finalNumber,
+      sessionId: cart.sessionId,
+      email,
+      status: paymentMethod === 'stripe' ? ('pending_payment' as const) : ('confirmed' as const),
+      shippingAddress: shippingAddress as object,
+      subtotal,
+      shipping,
+      tax,
+      total,
+      items: {
+        create: cart.items.map((item) => {
+          const p = item.product
+          const feat = p.featuredImage as { src: string; alt?: string }
+          return {
+            productId: p.id,
+            quantity: item.quantity,
+            price: item.price,
+            options: item.options as object,
+            productSnapshot: {
+              name: p.title,
+              handle: p.handle,
+              imageSrc: feat?.src ?? '/images/placeholder.svg',
+              imageAlt: feat?.alt ?? p.title,
+            },
+          }
+        }),
       },
+    }
+
+    const order = await prisma.order.create({
+      data: createOrderData,
       include: { items: true },
     })
 
+    if (paymentMethod === 'stripe') {
+      const stripe = getStripe()
+      if (!stripe) {
+        await prisma.order.update({ where: { id: order.id }, data: { status: 'confirmed' } })
+        await prisma.cartItem.deleteMany({ where: { cartId } })
+        return NextResponse.json({
+          orderNumber: order.number,
+          orderId: order.id,
+          total: Number(order.total),
+        })
+      }
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [
+          {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: `Order #${order.number}`,
+                description: `${cart.items.length} item(s)`,
+              },
+              unit_amount: Math.round(Number(order.total) * 100), // cents
+            },
+            quantity: 1,
+          },
+        ],
+        mode: 'payment',
+        success_url: `${BASE_URL}/order-successful?order=${order.number}&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${BASE_URL}/checkout`,
+        metadata: { orderNumber: order.number },
+      })
+      return NextResponse.json({
+        url: session.url,
+        orderNumber: order.number,
+      })
+    }
+
+    // cash_on_delivery: confirm order and clear cart
     await prisma.cartItem.deleteMany({ where: { cartId } })
 
     return NextResponse.json({

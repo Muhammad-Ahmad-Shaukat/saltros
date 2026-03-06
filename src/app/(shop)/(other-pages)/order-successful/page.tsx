@@ -2,6 +2,7 @@ import { Divider } from '@/components/divider'
 import { Heading } from '@/components/heading'
 import { Text } from '@/components/text'
 import { getOrder } from '@/data'
+import { verifyStripeSession } from '@/lib/verify-stripe-session'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,10 +11,12 @@ export const metadata: Metadata = {
   description: 'Your order has been successfully placed.',
 }
 
-type Props = { searchParams: Promise<{ order?: string }> }
+type Props = { searchParams: Promise<{ order?: string; session_id?: string }> }
 
 export default async function Page({ searchParams }: Props) {
-  const { order: orderNumber } = await searchParams
+  const { order: orderParam, session_id: sessionId } = await searchParams
+  // If redirected from Stripe, verify session and confirm order (clears cart)
+  const orderNumber = sessionId ? await verifyStripeSession(sessionId) : orderParam
   const order = orderNumber ? await getOrder(orderNumber) : null
 
   if (!orderNumber || !order) {

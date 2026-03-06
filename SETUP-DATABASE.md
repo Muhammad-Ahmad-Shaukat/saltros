@@ -9,6 +9,9 @@ Your `.env` already has `DATABASE_URL` and `DATABASE_URL_UNPOOLED` for Neon.
 1. In the Vercel project, go to **Settings → Environment Variables** and add:
    - `DATABASE_URL` – your Neon pooler URL (e.g. `postgresql://...?sslmode=require`)
    - `DATABASE_URL_UNPOOLED` – your Neon direct URL (for Prisma migrations/push)
+   - `AUTH_SECRET` – a random string for signing session cookies (e.g. `openssl rand -hex 32`)
+   - `Publishable_key` – Stripe publishable key (e.g. `pk_test_...`) for Stripe payments
+   - `Secret_key` – Stripe secret key (e.g. `sk_test_...`) for Stripe payments
 
 2. Deploy (or push to your connected repo). During **Build**, Vercel will:
    - Run `prisma generate` (Prisma client)
@@ -55,7 +58,8 @@ npm run dev
   - `POST /api/cart` – add item (body: `{ productId, quantity?, options? }`)
   - `PATCH /api/cart/items/[id]` – update quantity
   - `DELETE /api/cart/items/[id]` – remove item
-- **Checkout** – `POST /api/checkout` with `{ email, shippingAddress }` creates an order, clears the cart, and returns `orderNumber`. Checkout form posts to this and redirects to `/order-successful?order=XXX`.
+- **Auth** – Login/register at `/login` and `/register`. Session is stored in an HTTP-only cookie. APIs: `POST /api/auth/register`, `POST /api/auth/login`, `POST /api/auth/logout`, `GET /api/auth/session`. Set `AUTH_SECRET` in env for production.
+- **Checkout** – `POST /api/checkout` with `{ email, shippingAddress, paymentMethod: 'cash_on_delivery' | 'stripe' }`. **Cash on Delivery**: order is created and cart cleared; redirect to order-successful. **Stripe**: order created as pending, redirect to Stripe Checkout; after payment, user returns to order-successful and the session is verified to confirm the order and clear the cart. Env: `Publishable_key` and `Secret_key` (or `STRIPE_SECRET_KEY` / `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`).
 - **Orders** – List and detail use the current session (same cookie as cart). Orders are stored in Postgres with line items and totals.
 
 ## Useful commands
