@@ -33,7 +33,7 @@ export default async function Home() {
             products={collection?.products}
             collectionTitle={collection?.title}
             collectionHandle={collection?.handle}
-            collectionDescription={collection?.description}
+            collectionDescription={collection?.description ?? undefined}
           />
         ))}
 

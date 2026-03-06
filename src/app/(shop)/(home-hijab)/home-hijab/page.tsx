@@ -32,7 +32,7 @@ export default async function Home() {
             products={collection?.products}
             collectionTitle={collection?.title}
             collectionHandle={collection?.handle}
-            collectionDescription={collection?.description}
+            collectionDescription={collection?.description ?? undefined}
           />
         ))}
       <FeatureSection1 className="container mt-24 sm:mt-28 lg:mt-40" />
