@@ -21,7 +21,7 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
           />
-          <Text className="mt-2.5 max-w-xs">Bring nature’s raw beauty home with our hand-carved salt decor. <span className='font-bold'>Sculpted by nature, refined for you.</span></Text>
+          <Text className="mt-2.5 max-w-xs">Bring nature’s raw beauty home with our hand-carved salt decor.</Text>
         </div>
         <div className="w-full">
           <Image

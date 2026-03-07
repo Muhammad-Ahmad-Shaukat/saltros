@@ -29,7 +29,7 @@
     "bcryptjs": "^2.4.3",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
-    "framer-motion": "^12.7.4",
+    "framer-motion": "^12.35.1",
     "jose": "^5.9.6",
     "next": "^16.1.1",
     "nodemailer": "^8.0.1",
