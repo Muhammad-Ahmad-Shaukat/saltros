@@ -35,7 +35,7 @@ export default async function Page({ searchParams }: Props) {
               .
             </Text>
             <div className="mt-8">
-              <Link href="/collection/all" className="text-sm font-medium text-zinc-950 uppercase">
+              <Link href="/shop" className="text-sm font-medium text-zinc-950 uppercase">
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>
               </Link>
@@ -128,7 +128,7 @@ export default async function Page({ searchParams }: Props) {
           </dl>
 
           <div className="mt-16 border-t border-zinc-200 py-6 text-right">
-            <Link href="/collection/all" className="text-sm font-medium text-zinc-950 uppercase">
+            <Link href="/shop" className="text-sm font-medium text-zinc-950 uppercase">
               Continue Shopping
               <span aria-hidden="true"> &rarr;</span>
             </Link>

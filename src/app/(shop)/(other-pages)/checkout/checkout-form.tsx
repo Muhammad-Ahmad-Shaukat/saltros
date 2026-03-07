@@ -176,7 +176,7 @@ export function CheckoutForm({
               defaultValue="Cash on Delivery"
               className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-4"
             >
-              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-[:checked]:border-zinc-950 has-[:checked]:ring-2 has-[:checked]:ring-zinc-950">
+              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-checked:border-zinc-950 has-checked:ring-2 has-checked:ring-zinc-950">
                 <div className="flex w-full items-center justify-between">
                   <div className="flex items-center">
                     <div className="text-sm">
@@ -188,7 +188,7 @@ export function CheckoutForm({
                 </div>
               </Field>
 
-              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-[:checked]:border-zinc-950 has-[:checked]:ring-2 has-[:checked]:ring-zinc-950">
+              <Field className="relative flex cursor-pointer rounded-lg border border-zinc-300 bg-white p-4 shadow-sm hover:border-zinc-400 focus:outline-none has-checked:border-zinc-950 has-checked:ring-2 has-checked:ring-zinc-950">
                 <div className="flex w-full items-center justify-between">
                   <div className="flex items-center">
                     <div className="text-sm">
@@ -247,7 +247,7 @@ export function CheckoutForm({
               <span className="text-xs">
                 or{' '}
                 <span className="text-xs font-medium text-zinc-900 uppercase">
-                  <Link href="/collection/all">Continue Shopping</Link>
+                  <Link href="/shop">Continue Shopping</Link>
                   <span aria-hidden="true"> →</span>
                 </span>
               </span>

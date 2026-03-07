@@ -2,6 +2,7 @@
 
 import { TCollection } from '@/data'
 import { TImage } from '@/type'
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { ArrowDown01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import Image from 'next/image'
@@ -24,13 +25,16 @@ const MegaMenuPopover = ({
   variant = 'right-collection',
 }: MegaMenuPopoverProps) => {
   return (
-    <div className="group flex h-full items-center">
-      <div className="flex cursor-pointer items-center gap-x-0.5 focus-visible:outline-0 transition-colors hover:text-zinc-600 relative before:absolute before:-inset-x-4 before:-bottom-10 before:h-12 before:z-0">
+    <Popover className="flex h-full items-center">
+      <PopoverButton className="flex cursor-pointer items-center gap-x-0.5 focus-visible:outline-0 transition-colors hover:text-zinc-600 relative before:absolute before:-inset-x-4 before:-bottom-10 before:h-12 before:z-0">
         <Text className="relative z-10">{children}</Text>
-        <HugeiconsIcon icon={ArrowDown01Icon} size={16} strokeWidth={1} className="transition-transform duration-200 group-hover:rotate-180 relative z-10" />
-      </div>
+        <HugeiconsIcon icon={ArrowDown01Icon} size={16} strokeWidth={1} className="transition-transform duration-200 ui-open:rotate-180 relative z-10" />
+      </PopoverButton>
 
-      <div className="invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 absolute inset-x-0 top-full -z-10 bg-white pt-8 pb-10 text-zinc-950 shadow-xl transition-all duration-300 ease-out dark:bg-zinc-800 dark:text-zinc-100">
+      <PopoverPanel
+        transition
+        className="absolute inset-x-0 top-full -z-10 bg-white pt-8 pb-10 text-zinc-950 shadow-xl transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in dark:bg-zinc-800 dark:text-zinc-100"
+      >
         <div className="mx-auto flex justify-center gap-x-[10vw] px-8 2xl:container">
           <div className="flex flex-col justify-center min-w-[200px]">
             {megamenu.map((group) => {
@@ -80,8 +84,8 @@ const MegaMenuPopover = ({
             </div>
           ) : null}
         </div>
-      </div>
-    </div>
+      </PopoverPanel>
+    </Popover>
   )
 }
 

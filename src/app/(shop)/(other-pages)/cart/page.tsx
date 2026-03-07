@@ -48,7 +48,7 @@ export default async function Page() {
               <div className="rounded-lg border border-zinc-900/10 px-4 py-12 text-center">
                 <Text className="text-zinc-500">Your cart is empty.</Text>
                 <div className="mt-4">
-                  <Button href="/collection/all">Continue shopping</Button>
+                  <Button href="/shop">Continue shopping</Button>
                 </div>
               </div>
             ) : (
@@ -106,7 +106,7 @@ export default async function Page() {
                 <span className="text-xs">
                   or{' '}
                   <span className="text-xs font-medium text-zinc-900 uppercase">
-                    <Link href="/collection/all">Continue Shopping</Link>
+                    <Link href="/shop">Continue Shopping</Link>
                     <span aria-hidden="true"> →</span>
                   </span>
                 </span>
