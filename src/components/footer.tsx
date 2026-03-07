@@ -5,6 +5,7 @@ import { Text } from './text'
 
 const navigation = {
   shop: [
+    { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
     { name: 'Collections', href: '/collections/all' },
     { name: 'Cart', href: '/cart' },

@@ -51,7 +51,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       )}
     >
       <body>
-        <SplashCursor />
+        <div className="fixed inset-0 z-50 pointer-events-none opacity-50">
+          <SplashCursor SPLAT_RADIUS={0.1} SPLAT_FORCE={3000} />
+        </div>
         <Aside.Provider>{children}</Aside.Provider>
       </body>
     </html>

@@ -85,6 +85,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
             </MegaMenuPopover>
 
             {/* TEXT LINKS */}
+            <TextLink href="/">Home</TextLink>
             <TextLink href="/collections/page-style-2/all">Shop</TextLink>
             <TextLink href="/checkout">Checkout</TextLink>
           </div>
