@@ -327,3 +327,5 @@ bitpan-ecommerce-nextjs-template
 └─ tsconfig.json
 
 ```
+
+
