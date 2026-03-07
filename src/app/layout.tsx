@@ -22,16 +22,16 @@ const playfair_display = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Bitpan',
-    default: 'Bitpan',
+    template: '%s - Salt Rosa',
+    default: 'Salt Rosa',
   },
   description:
-    'Bitpan is a modern and elegant template for Next.js, Tailwind CSS, and TypeScript. It is designed to be simple and easy to use, with a focus on performance and accessibility.',
+    'Salt Rosa',
   keywords: [
     'Next.js',
     'Tailwind CSS',
     'TypeScript',
-    'Bipan',
+    'Salt Rosa',
     'Headless UI',
     'Fashion',
     'Hijab',

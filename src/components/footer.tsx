@@ -163,7 +163,7 @@ export default function Footer({ className }: FooterProps) {
           ))}
         </div>
         <Text className="mt-8 text-sm/6 text-zinc-600 md:order-1 md:mt-0">
-          &copy; 2025 BitPan Company, Inc. All rights reserved.
+          &copy; 2026 Salt Rosa. All rights reserved.
         </Text>
       </div>
     </footer>

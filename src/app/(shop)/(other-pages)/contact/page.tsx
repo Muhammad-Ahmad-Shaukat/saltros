@@ -107,7 +107,7 @@ const Page = () => {
               <div className="flex max-w-sm flex-col gap-7 self-end">
                 <div>
                   <Text className="text-zinc-500">email</Text>
-                  <Text className="mt-2">exBitPan.store@gmail.com</Text>
+                  <Text className="mt-2">contact@saltrosa.com</Text>
                 </div>
                 <div>
                   <Text className="text-zinc-500">Phone</Text>

@@ -19,7 +19,7 @@ const data = [
   {
     id: 3,
     title: '5 STAR CARE',
-    description: 'We\'re here for you anytime, <span class="underline">contact@bitpan.com',
+    description: 'We\'re here for you anytime, <span class="underline">contact@saltrosa.com',
     icon: Mailbox01Icon,
   },
   {

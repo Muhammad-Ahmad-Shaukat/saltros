@@ -67,7 +67,7 @@ const Page = () => {
       <div className="mt-24 sm:mt-28 lg:mt-40">
         <Heading level={2} bigger>
           Some interesting information <br />
-          about the <span data-slot="italic">Bitpan store!</span>
+          about the <span data-slot="italic">Salt Rosa store!</span>
         </Heading>
         <div className="mt-14 flex flex-col justify-between gap-10 lg:flex-row">
           <div className="flex-4/9">

@@ -1,4 +1,3 @@
-// Prisma schema for Bitpan E-commerce
 // Uses Neon Postgres - set DATABASE_URL or POSTGRES_PRISMA_URL in .env
 
 generator client {
