@@ -3,6 +3,7 @@ import '@/styles/tailwind.css'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
+import SplashCursor from '@/components/SplashCursor'
 
 const dm_sans = DM_Sans({
   subsets: ['latin'],
@@ -50,6 +51,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       )}
     >
       <body>
+        <SplashCursor />
         <Aside.Provider>{children}</Aside.Provider>
       </body>
     </html>

@@ -5,46 +5,20 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { TextLink } from '../text'
 import CartIconBtn from './cart-icon-btn'
-import DropdownMenuPopover from './dropdown-menu-popover'
 import HamburgerIconMenu from './hamburger-icon-menu'
 import MegaMenuPopover, { MegaMenuPopoverProps } from './mega-menu-popover'
 import SearchIconPopover from './search-icon-popover'
 import UserIconPopover from './user-icon-popover'
 
-const demo_pages_menu = [
-  { name: 'Home skincare', href: '/' },
-  { name: 'Home fashion', href: '/home-fashion' },
-  { name: 'Home hijab', href: '/home-hijab' },
-  { name: 'Coming soon', href: '#' },
-]
 const mega_menus = [
   {
-    name: 'Demo pages',
-    href: '#',
-    chidren: demo_pages_menu,
-  },
-  {
-    name: 'Collections',
+    name: 'Quick links',
     href: '#',
     chidren: [
-      { name: 'All collections 1', href: '/collections/all' },
-      { name: 'All collections 2', href: '/collections/page-style-2/all' },
-      { name: 'Collection page', href: '/collections/face-wash' },
-      { name: 'Product Detail', href: '/products/hydrating-sheet-mask' },
-      { name: 'Product Detail 2', href: '/products/page-style-3/leather-tote-bag' },
-      { name: 'Product Detail 3', href: '/products/page-style-2/printed-chiffon-hijab' },
-    ],
-  },
-  {
-    name: "What's new",
-    href: '#',
-    chidren: [
+      { name: 'Track order', href: '/orders' },
       { name: 'Contact us', href: '/contact' },
       { name: 'About us', href: '/about-us' },
-      { name: 'Journal / Blog', href: '/blog' },
-      { name: 'Login / Sign up', href: '/login' },
-      { name: 'Shopping Cart', href: '/cart' },
-      { name: 'Orders', href: '/orders' },
+      { name: 'Blogs', href: '/blog' },
     ],
   },
 ]
@@ -95,8 +69,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
 
           {/* MAIN CENTER MENUS */}
           <div className="hidden lg:flex lg:gap-x-8">
-            {/* DROPDOWN */}
-            <DropdownMenuPopover dropdownMenu={demo_pages_menu}>Demo pages</DropdownMenuPopover>
+            {/* DROPDOWN REMOVED */}
 
             {/* MEGA MENU */}
             <MegaMenuPopover
