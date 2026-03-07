@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
 const Collections = () => {
-  return redirect('/collections/all')
+  return redirect('/collection/all')
 }
 
 export default Collections

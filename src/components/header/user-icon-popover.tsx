@@ -17,7 +17,7 @@ const userMenu = [
   { name: 'My account', href: '/orders', icon: UserListIcon },
   { name: 'Account settings', href: '/settings', icon: Settings03Icon },
   { name: 'Orders', href: '/orders', icon: ShoppingBasket01Icon },
-  { name: 'Wishlist', href: '/collections/all', icon: FavouriteIcon },
+  { name: 'Wishlist', href: '/collection/all', icon: FavouriteIcon },
 ]
 
 export interface UserIconPopoverProps {

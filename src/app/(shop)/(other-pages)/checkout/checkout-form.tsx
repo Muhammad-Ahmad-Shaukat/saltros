@@ -247,7 +247,7 @@ export function CheckoutForm({
               <span className="text-xs">
                 or{' '}
                 <span className="text-xs font-medium text-zinc-900 uppercase">
-                  <Link href="/collections/all">Continue Shopping</Link>
+                  <Link href="/collection/all">Continue Shopping</Link>
                   <span aria-hidden="true"> →</span>
                 </span>
               </span>

@@ -26,7 +26,7 @@ export default function CollectionCard({
           src={image || '/placeholder.webp'}
           alt={title}
           fill
-          className="z-0 rounded-lg object-cover"
+          className="z-0 rounded-lg object-cover transition-transform duration-500 group-hover/collection:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
           priority
         />
@@ -46,7 +46,7 @@ export default function CollectionCard({
         ) : null}
       </div>
 
-      <TextLink href={`/collections/${handle}`}>
+      <TextLink href={`/collection/${handle}`}>
         <span className="absolute inset-0"></span>
         <span className="sr-only">{title}</span>
       </TextLink>

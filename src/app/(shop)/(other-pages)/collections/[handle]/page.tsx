@@ -28,7 +28,7 @@ export default async function Collection({ params }: { params: Promise<{ handle:
   const { handle } = await params
   const collection = await getCollectionByHandle(handle)
   if (!collection?.id) {
-    return redirect('/collections/all')
+    return redirect('/collection/all')
   }
   const products = collection.products
   const breadcrumbs = [{ id: 1, name: 'Home', href: '/' }]

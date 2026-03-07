@@ -1,6 +1,5 @@
 import { VectorArrowDown3, VectorArrowDown4 } from '@/components/vector-arrow-down'
 import { TImage } from '@/type'
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
 import Image from 'next/image'
@@ -79,20 +78,22 @@ const FeatureSection2 = ({
 
           <dl className="divide-y divide-zinc-900/10">
             {faqs.map((faq, index) => (
-              <Disclosure defaultOpen={index === 0} key={faq.question} as="div" className="py-6 first:pt-0 last:pb-0">
+              <div key={faq.question} className="group py-6 first:pt-0 last:pb-0 overflow-hidden cursor-default">
                 <dt>
-                  <DisclosureButton className="group flex w-full justify-between text-start">
+                  <div className="flex w-full justify-between text-start transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-400">
                     <Text className="font-medium">{faq.question}</Text>
                     <span className="ms-6 self-center text-zinc-600 dark:text-zinc-400">
-                      <PlusIcon aria-hidden="true" className="size-4 group-data-open:hidden" />
-                      <MinusIcon aria-hidden="true" className="size-4 group-not-data-open:hidden" />
+                      <PlusIcon aria-hidden="true" className="size-4 block group-hover:hidden" />
+                      <MinusIcon aria-hidden="true" className="size-4 hidden group-hover:block" />
                     </span>
-                  </DisclosureButton>
+                  </div>
                 </dt>
-                <DisclosurePanel as="dd" className="mt-3">
-                  <Text className="max-w-sm text-zinc-600">{faq.answer}</Text>
-                </DisclosurePanel>
-              </Disclosure>
+                <dd className="grid grid-rows-[0fr] transition-all duration-300 ease-in-out group-hover:grid-rows-[1fr] mt-0 group-hover:mt-3">
+                  <div className="overflow-hidden">
+                    <Text className="max-w-sm text-zinc-600">{faq.answer}</Text>
+                  </div>
+                </dd>
+              </div>
             ))}
           </dl>
         </div>

@@ -31,7 +31,7 @@ export function ProductForm({ product }: { product: TProductItem }) {
   const breadcrumbs = [
     { id: 1, name: 'Home', href: '/' },
     ...(collection
-      ? [{ id: 2, name: collection.title, href: '/collections/all' } as const]
+      ? [{ id: 2, name: collection.title, href: '/collection/all' } as const]
       : []),
   ]
   //

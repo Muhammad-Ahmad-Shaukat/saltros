@@ -1,65 +1,91 @@
+'use client'
+
 import { Button } from '@/components/button'
 import { Divider } from '@/components/divider'
 import { Heading } from '@/components/heading'
+import { Input } from '@/components/input'
 import { Link } from '@/components/link'
 import { Text, TextLink } from '@/components/text'
 import { getOrders } from '@/data'
-import { Metadata } from 'next'
+import { TOrder } from '@/type'
 import Image from 'next/image'
+import { useState } from 'react'
 
-export const metadata: Metadata = {
-  title: 'Your Orders',
-  description: 'Check the status of recent orders, manage returns, and discover similar products.',
-}
+export default function Page() {
+  const [orderNumber, setOrderNumber] = useState('')
+  const [trackedOrder, setTrackedOrder] = useState<TOrder | null>(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-export default async function Page() {
-  const orders = await getOrders()
+  const handleTrack = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    
+    // Simulating API call for demonstration
+    setTimeout(async () => {
+      const orders = await getOrders()
+      const found = orders.find(o => o.number === orderNumber) || orders[0]
+      if (orderNumber.trim()) {
+         // simulate success matching first order if exactly matching standard demo isn't possible
+         setTrackedOrder(found)
+      } else {
+         setError('Please enter a valid order number.')
+      }
+      setLoading(false)
+    }, 800)
+  }
 
   return (
     <div className="container">
       <div className="mx-auto max-w-3xl py-16 sm:py-24">
         <div className="max-w-xl">
-          <Heading level={1} id="your-orders-heading" bigger>
-            Your <span data-slot="italic">Orders</span>
+          <Heading level={1} id="track-order-heading" bigger>
+            Track <span data-slot="italic">Order</span>
           </Heading>
           <Text className="mt-2 text-zinc-500">
-            Check the status of recent orders, manage returns, and discover similar products.
+            Enter your order number to track your package status. (For demo purposes, you can enter any string).
           </Text>
         </div>
 
-        <div className="mt-12 space-y-20 sm:mt-16">
-          {orders.map((order) => (
-            <section key={order.number} aria-labelledby={`${order.number}-heading`}>
-              <div className="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4">
-                <h2 id={`${order.number}-heading`} className="text-lg font-medium text-zinc-900 md:shrink-0">
-                  Order #{order.number}
+        <form onSubmit={handleTrack} className="mt-8 flex gap-4 max-w-sm">
+          <Input 
+            required 
+            placeholder="e.g. WU88191111" 
+            value={orderNumber} 
+            onChange={(e) => setOrderNumber(e.target.value)} 
+            className="flex-1"
+          />
+          <Button type="submit" disabled={loading} color="dark">
+            {loading ? 'Tracking...' : 'Track'}
+          </Button>
+        </form>
+
+        {error && <Text className="mt-4 text-red-500">{error}</Text>}
+
+        {trackedOrder && (
+          <div className="mt-12 space-y-20 sm:mt-16">
+            <section aria-labelledby={`${trackedOrder.number}-heading`}>
+              <div className="space-y-1 md:flex md:items-baseline md:space-y-0 md:space-x-4 border-b border-zinc-200 pb-4">
+                <h2 id={`${trackedOrder.number}-heading`} className="text-lg font-medium text-zinc-900 md:shrink-0">
+                  Order #{trackedOrder.number}
                 </h2>
                 <div className="space-y-5 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 md:min-w-0 md:flex-1">
-                  <Text className="text-xs text-zinc-500">{order.status}</Text>
-                  <div className="flex items-center text-sm font-medium">
-                    <TextLink href={'/orders/' + order.number} className="text-zinc-950 underline">
-                      Order details
-                      <span aria-hidden="true" className="font-light">
-                        {' '}
-                        &rarr;
-                      </span>
-                    </TextLink>
-                  </div>
+                  <Text className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wider">{trackedOrder.status}</Text>
                 </div>
               </div>
 
-              <div className="mt-6 -mb-6 flow-root divide-y divide-zinc-200 border-t border-zinc-200">
-                {order.products.map((product) => (
+              <div className="mt-6 -mb-6 flow-root divide-y divide-zinc-200">
+                {trackedOrder.products.map((product) => (
                   <div key={product.id} className="py-6 sm:flex">
                     <div className="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
-                      <div className="relative aspect-3/4 w-20 flex-none sm:w-40">
+                      <div className="relative aspect-3/4 w-20 flex-none sm:w-40 border border-zinc-200 rounded-md overflow-hidden">
                         <Image
                           alt={product.imageAlt}
                           src={product.imageSrc}
                           fill
-                          className="rounded-md object-cover"
+                          className="object-cover"
                           sizes="(min-width: 640px) 10rem, 100vw"
-                          priority
                         />
                       </div>
                       <div className="flex min-w-0 flex-1 flex-col gap-1 pt-1.5 sm:pt-0">
@@ -77,20 +103,12 @@ export default async function Page() {
                         <Text className="mt-auto font-medium text-zinc-900">{product.price}</Text>
                       </div>
                     </div>
-                    <div className="mt-6 max-w-48 space-y-2 sm:mt-0 sm:ml-6 sm:w-40 sm:flex-none">
-                      <Button type="button" className="w-full" outline>
-                        Shop similar
-                      </Button>
-                      <Button className="w-full" type="button">
-                        Buy again
-                      </Button>
-                    </div>
                   </div>
                 ))}
               </div>
             </section>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
       <Divider />
     </div>

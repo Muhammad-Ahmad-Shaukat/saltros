@@ -6,7 +6,7 @@ import { Link } from './link'
 const styles = {
   base: [
     // Base
-    'relative isolate inline-flex shrink-0 items-center justify-center gap-x-2 rounded-full border uppercase',
+    'relative isolate inline-flex shrink-0 items-center justify-center gap-x-2 rounded-full border uppercase transition-all duration-300 active:scale-95 hover:-translate-y-0.5 hover:shadow-md',
     // Sizing
     'px-5 py-3.5 sm:px-6 sm:py-4 text-sm/none',
     // Focus
@@ -157,7 +157,7 @@ const styles = {
   //
   baseForCircle: [
     // Base
-    'relative isolate inline-flex shrink-0 items-center justify-center rounded-full border font-medium uppercase',
+    'relative isolate inline-flex shrink-0 items-center justify-center rounded-full border font-medium uppercase transition-all duration-300 active:scale-95 hover:-translate-y-0.5 hover:shadow-md',
     // Sizing
     'p-3 sm:p-3.5 text-sm/none',
     // Focus

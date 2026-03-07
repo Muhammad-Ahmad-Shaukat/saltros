@@ -29,7 +29,7 @@ const HeroSection3 = ({ className }: HeroSection3Props) => {
 
       <div className="absolute bottom-14 left-1/2 container max-w-3xl -translate-x-1/2 sm:bottom-20">
         <Button
-          href={'/collections/all'}
+          href={'/collection/all'}
           color="white"
           className="mt-10 w-full cursor-pointer !border-white py-5 font-medium tracking-wide underline sm:py-6"
         >

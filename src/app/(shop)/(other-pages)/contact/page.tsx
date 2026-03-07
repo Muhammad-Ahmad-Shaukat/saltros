@@ -10,6 +10,7 @@ import { VectorArrowDown2 } from '@/components/vector-arrow-down'
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ContactForm } from './contact-form'
 
 const socials = [
   {
@@ -141,39 +142,6 @@ const Page = () => {
 
       <Divider className="mt-16 sm:mt-24 lg:mt-32" />
     </div>
-  )
-}
-
-const ContactForm = () => {
-  return (
-    <form action="" method="POST" className="flex w-full max-w-sm flex-col gap-5">
-      <Field>
-        <Label>Your name</Label>
-        <Input placeholder="Mr.  / Mrs." type="text" name="name" />
-        <Description>This is your public display name.</Description>
-      </Field>
-      <Field>
-        <Label>Email</Label>
-        <Input placeholder="mail@gmail.com" type="email" name="email" />
-      </Field>
-      <Field>
-        <Label>Message</Label>
-        <Textarea placeholder="Tell us a bit about yourself" name="Message" />
-        <Description>You can @mention other users and organizations.</Description>
-      </Field>
-      <div className="flex items-center justify-between">
-        <CheckboxField>
-          <Checkbox name="conditions" />
-          <Label>Accept terms and conditions</Label>
-          <Description>You agree to our Terms of Service and Privacy Policy.</Description>
-        </CheckboxField>
-      </div>
-      <div className="pt-5">
-        <Button type="submit" className="w-full">
-          SUBMIT
-        </Button>
-      </div>
-    </form>
   )
 }
 

@@ -38,7 +38,7 @@ const SectionProductCarousel = ({
   return (
     <div className={className}>
       <div className="flex flex-wrap items-center justify-between gap-6">
-        <Button outline href={collectionHandle ? `/collections/${collectionHandle}` : '#'}>
+        <Button outline href={collectionHandle ? `/collection/${collectionHandle}` : '#'}>
           EXPLORE COLLECTION
         </Button>
 

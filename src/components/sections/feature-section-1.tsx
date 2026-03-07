@@ -38,7 +38,7 @@ const FeatureSection1 = ({
     alt: 'feature-1-2',
   },
   buttonText = 'EXPLORE PRODUCTS',
-  buttonLink = '/collections/all',
+  buttonLink = '/collection/all',
 }: FeatureSection1Props) => {
   return (
     <div className={clsx('flex flex-col justify-between gap-8 lg:flex-row lg:gap-6 xl:gap-2.5', className)}>
@@ -65,7 +65,7 @@ const FeatureSection1 = ({
           <div className="flex flex-1/2 sm:justify-center xl:flex-2/3">
             <div className="max-w-sm self-end">
               <Text dangerouslySetInnerHTML={{ __html: description }}></Text>
-              <Button outline href={buttonLink} className="mt-7">
+              <Button outline href={buttonLink} className="mt-7 transition-colors duration-300 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900">
                 {buttonText}
               </Button>
             </div>

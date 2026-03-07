@@ -128,6 +128,20 @@ export async function POST(request: Request) {
     // cash_on_delivery: confirm order and clear cart
     await prisma.cartItem.deleteMany({ where: { cartId } })
 
+    // Non-blocking email trigger
+    fetch(new URL('/api/send-email', request.url), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: 'order',
+        data: {
+          email: order.email,
+          paymentMethod: order.status,
+          shippingAddress: order.shippingAddress,
+        }
+      })
+    }).catch(console.error);
+
     return NextResponse.json({
       orderNumber: order.number,
       orderId: order.id,

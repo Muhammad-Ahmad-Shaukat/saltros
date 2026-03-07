@@ -14,9 +14,9 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
   const { id, title, price, featured_image, handle, images, tags, vendor, selected_options } = product
 
   // find the product color
-  const color = selected_options?.find((option) => option.name === 'Color')?.value
+  const color = selected_options?.find((option: any) => option.name === 'Color')?.value
   // // find the product size
-  const size = selected_options?.find((option) => option.name === 'Size')?.value
+  const size = selected_options?.find((option: any) => option.name === 'Size')?.value
 
   return (
     <div className={clsx('group/prd relative w-full', className)}>
@@ -26,7 +26,7 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
           src={images[0]?.src ?? (featured_image as { src?: string })?.src ?? '/images/placeholder.svg'}
           alt={title}
           fill
-          className="z-0 rounded-lg object-cover"
+          className="z-0 rounded-lg object-cover transition-transform duration-500 group-hover/prd:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
           priority
         />
@@ -35,7 +35,7 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
             src={images[1].src}
             alt={title}
             fill
-            className="z-0 rounded-lg object-cover opacity-0 transition-opacity duration-300 group-hover/prd:opacity-100"
+            className="z-0 rounded-lg object-cover opacity-0 transition-all duration-500 group-hover/prd:scale-105 group-hover/prd:opacity-100"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
           />
         ) : null}

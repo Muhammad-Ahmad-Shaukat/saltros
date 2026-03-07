@@ -64,7 +64,7 @@ const FeatureSection3 = ({
         {/* Heading */}
         <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <div className="flex-1/3">
-            <Button href={'/collections/all'} outline>
+            <Button href={'/collection/all'} outline>
               Our products
             </Button>
           </div>
@@ -89,7 +89,7 @@ const FeatureSection3 = ({
             {/* Heading */}
             <div className="flex items-end justify-between gap-4">
               <Heading dangerouslySetInnerHTML={{ __html: collection1.title }}></Heading>
-              <ButtonCircle href={'/collections/all'}>
+              <ButtonCircle href={'/collection/all'}>
                 <ArrowUpRightIcon className="h-4 w-4 text-zinc-50" />
               </ButtonCircle>
             </div>
@@ -134,7 +134,7 @@ const FeatureSection3 = ({
             {/* Heading */}
             <div className="flex items-end justify-between gap-4">
               <Heading dangerouslySetInnerHTML={{ __html: collection2.title }}></Heading>
-              <ButtonCircle href={'/collections/all'}>
+              <ButtonCircle href={'/collection/all'}>
                 <ArrowUpRightIcon className="h-4 w-4 text-zinc-50" />
               </ButtonCircle>
             </div>

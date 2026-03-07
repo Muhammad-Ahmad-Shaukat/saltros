@@ -71,6 +71,9 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
           <div className="hidden lg:flex lg:items-center lg:gap-x-8">
             {/* DROPDOWN REMOVED */}
 
+            {/* HOMEPAGE LINK */}
+            <TextLink href="/">Home</TextLink>
+
             {/* MEGA MENU */}
             <MegaMenuPopover
               megamenu={mega_menus}
@@ -85,8 +88,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
             </MegaMenuPopover>
 
             {/* TEXT LINKS */}
-            <TextLink href="/">Home</TextLink>
-            <TextLink href="/collections/page-style-2/all">Shop</TextLink>
+            <TextLink href="/collection/page-style-2/all">Shop</TextLink>
             <TextLink href="/checkout">Checkout</TextLink>
           </div>
 

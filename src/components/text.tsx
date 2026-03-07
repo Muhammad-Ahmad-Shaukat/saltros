@@ -6,7 +6,7 @@ export function Text({ className, ...props }: React.ComponentPropsWithoutRef<'p'
 }
 
 export function TextLink({ className, ...props }: React.ComponentPropsWithoutRef<typeof Link>) {
-  return <Link {...props} className={clsx(className, 'text-sm/6 uppercase')} />
+  return <Link {...props} className={clsx(className, 'text-sm/6 uppercase inline-block transition-transform duration-300 hover:-translate-y-0.5')} />
 }
 
 export function Strong({ className, ...props }: React.ComponentPropsWithoutRef<'strong'>) {

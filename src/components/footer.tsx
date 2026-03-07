@@ -7,7 +7,7 @@ const navigation = {
   shop: [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Collections', href: '/collections/all' },
+    { name: 'Collections', href: '/collection/all' },
     { name: 'Cart', href: '/cart' },
     { name: 'Checkout', href: '/checkout' },
   ],
