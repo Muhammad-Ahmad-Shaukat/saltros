@@ -6,11 +6,10 @@ import { Heading } from '@/components/heading'
 import { Input } from '@/components/input'
 import { Link } from '@/components/link'
 import { Text } from '@/components/text'
-import { TOrder } from '@/type'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const dummyOrder: TOrder = {
+const dummyOrder: any = {
   id: 1,
   number: 'WU88191111',
   date: '2025-01-01',
@@ -44,7 +43,7 @@ const dummyOrder: TOrder = {
 
 export default function Page() {
   const [orderNumber, setOrderNumber] = useState('')
-  const [trackedOrder, setTrackedOrder] = useState<TOrder | null>(null)
+  const [trackedOrder, setTrackedOrder] = useState<any | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
