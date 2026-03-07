@@ -21,12 +21,12 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
           />
-          <Text className="mt-2.5 max-w-xs">Minimalist design, easy to coordinate, suitable for many body shapes.</Text>
+          <Text className="mt-2.5 max-w-xs">From mineral-rich edible salt to hand-carved decorative pieces, we provide nature’s finest elements for a healthier, more beautiful home.</Text>
         </div>
         <div className="w-full">
           <Image
-            src="/images/hijab/hero-1-2.png"
-            alt="hero-1"
+            src="/images/edible-salt.avif"
+            alt="edible Himalayan salt"
             width={450}
             className="w-full"
             height={440}
@@ -36,18 +36,18 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
         </div>
         <div className="flex w-full flex-col justify-end gap-2.5">
           <Text className="max-w-xs self-end text-right">
-            The fabric is comfortable to wear in any season of the year.
+            Our sustainable salt products serve as both stunning visual accents and functional wellness tools for the modern enthusiast.
           </Text>
           <Image
-            src="/images/hijab/hero-1-3.png"
-            alt="hero-1"
+            src="/images/salt-bricks.avif"
+            alt="salt bricks"
             className="w-full"
             width={450}
             height={280}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
           />
-          <Text className="max-w-xs">sophisticated but timeless design.</Text>
+          <Text className="max-w-xs">Nature’s most versatile mineral, refined for you.</Text>
         </div>
       </div>
       <ButtonLargeWithIcon href="/shop">explore all products</ButtonLargeWithIcon>
