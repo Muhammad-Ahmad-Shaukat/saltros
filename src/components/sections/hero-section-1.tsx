@@ -13,7 +13,7 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
       <div className="flex w-full flex-col justify-between gap-6 md:flex-row">
         <div className="w-full">
           <Image
-            src="/salt-decors.webp"
+            src="/images/salt-decors.webp"
             alt="salt decor items"
             width={450}
             height={340}
