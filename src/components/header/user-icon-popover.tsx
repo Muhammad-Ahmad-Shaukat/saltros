@@ -10,7 +10,6 @@ import {
   UserListIcon,
 } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { useRouter } from 'next/navigation'
 import { Text, TextLink } from '../text'
 
 const userMenu = [
@@ -25,13 +24,10 @@ export interface UserIconPopoverProps {
 }
 
 const UserIconPopover = ({ user }: UserIconPopoverProps) => {
-  const router = useRouter()
-
   async function handleSignOut(e: React.MouseEvent) {
     e.preventDefault()
     await fetch('/api/auth/logout', { method: 'POST' })
-    router.refresh()
-    router.push('/')
+    window.location.href = '/'
   }
 
   return (
@@ -63,7 +59,7 @@ const UserIconPopover = ({ user }: UserIconPopoverProps) => {
             <button
               type="button"
               onClick={handleSignOut}
-              className="flex w-full items-center gap-x-3.5 px-2 py-2 text-left hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
+              className="flex w-full items-center cursor-pointer gap-x-3.5 px-2 py-2 text-left hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
             >
               <HugeiconsIcon icon={Logout01Icon} size={20} color="currentColor" strokeWidth={1} />
               <Text>Sign out</Text>
