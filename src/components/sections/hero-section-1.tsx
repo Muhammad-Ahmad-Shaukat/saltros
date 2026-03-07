@@ -21,7 +21,7 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
           />
-          <Text className="mt-2.5 max-w-xs">From mineral-rich edible salt to hand-carved decorative pieces, we provide nature’s finest elements for a healthier, more beautiful home.</Text>
+          <Text className="mt-2.5 max-w-xs">Bring nature’s raw beauty home with our hand-carved salt decor. <span className='font-bold'>Sculpted by nature, refined for you.</span></Text>
         </div>
         <div className="w-full">
           <Image
