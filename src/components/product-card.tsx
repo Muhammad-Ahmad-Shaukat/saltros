@@ -1,7 +1,9 @@
+"use client"
 import { TProductItem } from '@/data'
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Text, TextLink } from './text'
 
 interface ProductCardProps {
@@ -21,7 +23,7 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
   return (
     <div className={clsx('group/prd relative w-full', className)}>
       {/* Product Image */}
-      <div className={clsx('relative w-full', imageRatio)}>
+      <Link href={`/products/${handle}`} className={clsx('relative block w-full', imageRatio)}>
         <Image
           src={images[0]?.src ?? (featured_image as { src?: string })?.src ?? '/images/placeholder.svg'}
           alt={title}
@@ -39,7 +41,7 @@ export default function ProductCard({ product, className, imageRatio = 'aspect-3
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 30vw"
           />
         ) : null}
-      </div>
+      </Link>
 
       {/* Category Label */}
       <div className="absolute top-3 left-3">
