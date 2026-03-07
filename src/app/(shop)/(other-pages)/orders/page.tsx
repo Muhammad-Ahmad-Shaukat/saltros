@@ -5,11 +5,42 @@ import { Divider } from '@/components/divider'
 import { Heading } from '@/components/heading'
 import { Input } from '@/components/input'
 import { Link } from '@/components/link'
-import { Text, TextLink } from '@/components/text'
-import { getOrders } from '@/data'
+import { Text } from '@/components/text'
 import { TOrder } from '@/type'
 import Image from 'next/image'
 import { useState } from 'react'
+
+const dummyOrder: TOrder = {
+  id: 1,
+  number: 'WU88191111',
+  date: '2025-01-01',
+  datetime: '2025-01-01T12:00:00Z',
+  href: '#',
+  invoiceHref: '#',
+  total: '$84.00',
+  status: 'In Transit',
+  customerInfo: {
+    name: 'Customer',
+    email: 'customer@test.com',
+    phone: '123-456-7890'
+  },
+  products: [
+    {
+      id: 1,
+      name: 'Essential Hijab',
+      description: 'Demo',
+      href: '#',
+      handle: 'essential-hijab',
+      price: '$42.00',
+      status: 'Shipped',
+      color: 'Black',
+      size: 'M',
+      imageSrc: '/images/hijab/feature-1-2.png',
+      imageAlt: 'Demo',
+      quantity: 1,
+    }
+  ]
+}
 
 export default function Page() {
   const [orderNumber, setOrderNumber] = useState('')
@@ -23,12 +54,10 @@ export default function Page() {
     setError('')
     
     // Simulating API call for demonstration
-    setTimeout(async () => {
-      const orders = await getOrders()
-      const found = orders.find(o => o.number === orderNumber) || orders[0]
+    setTimeout(() => {
       if (orderNumber.trim()) {
-         // simulate success matching first order if exactly matching standard demo isn't possible
-         setTrackedOrder(found)
+         dummyOrder.number = orderNumber
+         setTrackedOrder(dummyOrder)
       } else {
          setError('Please enter a valid order number.')
       }
