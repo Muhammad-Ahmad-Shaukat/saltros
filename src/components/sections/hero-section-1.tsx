@@ -13,8 +13,8 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
       <div className="flex w-full flex-col justify-between gap-6 md:flex-row">
         <div className="w-full">
           <Image
-            src="/images/hijab/hero-1-1.png"
-            alt="hero-1"
+            src="/salt-decors.webp"
+            alt="salt decor items"
             width={450}
             height={340}
             className="w-full"
