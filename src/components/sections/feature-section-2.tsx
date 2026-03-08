@@ -19,24 +19,24 @@ interface FeatureSection2Props {
 
 const faqs_demo = [
   {
-    question: 'TO CREATE MODEST FASHION THAT EMPOWERS',
-    answer: 'TO CREATE MODEST FASHION THAT EMPOWERS, INSPIRES, AND ELEVATES WOMEN AROUND THE WORLD.',
+    question: 'Is Himalayan salt decor safe for indoor use?',
+    answer: 'Yes, our hand-carved Himalayan salt decor is perfectly safe and designed for indoor use. When warmed by a bulb or the natural environment, these pieces can help release negative ions, potentially improving air quality and creating a calming, serene atmosphere in your home.',
   },
   {
-    question: 'TO DESIGN TIMELESS PIECES',
-    answer: 'TO DESIGN TIMELESS PIECES THAT TRANSCEND TRENDS AND LIVE IN YOUR WARDROBE FOREVER.',
+    question: 'How do I maintain and clean my salt bricks?',
+    answer: 'To keep your salt bricks in pristine condition, simply wipe them with a dry, lint-free cloth to remove any surface dust. Avoid using water or harsh cleaning chemicals, as salt is moisture-absorbent and can dissolve or erode if exposed to excess liquid.',
   },
   {
-    question: 'TO CHAMPION SUSTAINABLE PRACTICES',
-    answer: 'TO CHAMPION SUSTAINABLE PRACTICES, CRAFTING QUALITY THAT HONORS OUR PLANET.',
+    question: 'Can edible Himalayan salt be used in daily cooking?',
+    answer: 'Absolutely. Our premium edible Himalayan salt is a mineral-rich, unprocessed alternative to common table salt. It adds a delicate, complex flavor to your dishes while providing essential trace minerals that are often stripped away during commercial processing.',
   },
   {
-    question: 'TO BUILD A COMMUNITY ROOTED IN FAITH',
-    answer: 'TO BUILD A COMMUNITY ROOTED IN FAITH, SELF-LOVE, AND EMPOWERMENT.',
+    question: 'How do I incorporate salt bricks into my interior design?',
+    answer: 'Salt bricks are highly versatile; they are commonly used to create stunning feature walls, backlit room dividers, or grounding decorative accents. Because they emit a soft, amber glow when backlit, they act as both structural building elements and functional mood lighting for any modern sanctuary.',
   },
   {
-    question: 'FASHION SHOULD BE MEANINGFUL',
-    answer: 'TO CREATE WITH PURPOSE, BECAUSE FASHION SHOULD BE MEANINGFUL, NOT DISPOSABLE.',
+    question: 'Are there any health benefits associated with Himalayan salt decor?',
+    answer: 'While Himalayan salt decor is primarily used for its aesthetic appeal and ability to create a serene ambiance, many users report a sense of well-being when surrounded by these natural elements. The gentle, warm glow of backlit salt bricks can help create a calming environment conducive to relaxation and mindfulness.',
   },
 ]
 const image_demo = {
