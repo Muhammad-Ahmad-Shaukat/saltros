@@ -44,7 +44,7 @@ export default async function Home() {
         className="mt-20 sm:mt-28 lg:mt-32"
         heading={`Essentials for <span data-slot="italic">Muslim Women</span> , from Daily Scarves to Versatile Clothing.`}
         collection1={{
-          title: '<span data-slot="italic">Premium Rayon</span> Hijab',
+          title: '<span data-slot="italic">Premium Salt</span> Lamps',
           desciption: 'The fabric is soft and smooth, making it easy to wear and style, and it is comfortable to wear.',
           images: [
             '/images/hijab/premium-rayon-1.webp',

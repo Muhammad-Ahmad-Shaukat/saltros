@@ -42,7 +42,7 @@ const HeroSection1 = ({ className }: HeroSection1Props) => {
         </div>
         <div className="flex w-full flex-1 flex-col justify-end gap-2.5">
           <Text className="max-w-xs self-end text-right">
-            Our sustainable salt products serve as both stunning visual accents and functional wellness tools for the modern enthusiast.
+            Our sustainable salt products are both stunning and functional wellness tools for the modern enthusiast.
           </Text>
           <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl mt-2">
             <Image
