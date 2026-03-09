@@ -60,7 +60,7 @@ const FeatureSection1 = ({
             dangerouslySetInnerHTML={{ __html: heading }}
             className="max-w-[400px]"
           ></Heading>
-          {/* <VectorArrowDown2 className="absolute start-60 top-1/2 hidden h-[150px] md:block 2xl:start-72 2xl:top-2/3 2xl:h-auto" /> */}
+          <VectorArrowDown2 className="absolute start-60 top-1/2 hidden h-[150px] md:block 2xl:start-72 2xl:top-2/3 2xl:h-auto" />
         </motion.div>
 
         <div className="mt-auto flex flex-col gap-8 sm:flex-row lg:gap-6 xl:gap-2.5">

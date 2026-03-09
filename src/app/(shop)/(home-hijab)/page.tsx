@@ -4,9 +4,9 @@ import FeatureSection2 from '@/components/sections/feature-section-2'
 import FeatureSection3 from '@/components/sections/feature-section-3'
 import HeroSection1 from '@/components/sections/hero-section-1'
 import SectionBiggestHeading from '@/components/sections/section-biggest-heading'
-import SectionCollectionCarousel from '@/components/sections/section-collection-carousel'
+import SectionBlogCarousel from '@/components/sections/section-collection-carousel'
 import SectionProductCarousel from '@/components/sections/section-product-carousel'
-import { getCollections, getGroupCollections } from '@/data'
+import { getCollections } from '@/data'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 
@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   let collections = await getCollections('hijab')
-  let groupCollections = await getGroupCollections('hijab')
   return (
     <div>
       <HeroSection1 className="container mt-14" />
@@ -69,7 +68,7 @@ export default async function Home() {
       <div className="container mt-20 sm:mt-28 lg:mt-32">
         <Divider />
       </div>
-      <SectionCollectionCarousel className="container mt-20" groupCollections={groupCollections} />
+      <SectionBlogCarousel className="container mt-20" />
     </div>
   )
 }
