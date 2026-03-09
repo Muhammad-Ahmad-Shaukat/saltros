@@ -93,8 +93,29 @@ const FeatureSection1 = ({
             <div className="max-w-sm self-end">
               <Text dangerouslySetInnerHTML={{ __html: description }} className="leading-relaxed"></Text>
               <Text dangerouslySetInnerHTML={{ __html: description2 }} className="leading-relaxed"></Text>
-              <Button outline href={buttonLink} className="mt-7 transition-colors duration-300 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 group">
-                <span className="transition-all duration-300 group-hover:tracking-[0.15em]">{buttonText}</span>
+              <Button 
+                outline 
+                href={buttonLink} 
+                className="group relative mt-7 overflow-hidden border-zinc-900/10 transition-colors duration-500 hover:text-white dark:hover:text-zinc-900"
+              >
+                <span className="relative z-10 flex items-center gap-2 transition-transform duration-500 group-hover:translate-x-1">
+                  {buttonText}
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    aria-hidden="true"
+                    className="size-4 -translate-x-4 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100"
+                  >
+                    <path
+                      d="M6.75 3.75 11.25 8l-4.5 4.25"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span className="absolute inset-0 z-0 translate-y-full bg-zinc-900 transition-transform duration-500 ease-in-out group-hover:translate-y-0 dark:bg-zinc-100" />
               </Button>
             </div>
           </motion.div>

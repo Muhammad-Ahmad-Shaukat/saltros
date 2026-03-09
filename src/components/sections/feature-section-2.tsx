@@ -43,10 +43,10 @@ const faqs_demo = [
   },
 ]
 const image_demo = {
-  src: '/images/hijab/feature-2-1.png',
+  src: '/images/salt-products-range.avif',
   width: 662,
   height: 653,
-  alt: 'feature-2-1',
+  alt: 'salt-products-range',
 }
 
 const FeatureSection2 = ({
