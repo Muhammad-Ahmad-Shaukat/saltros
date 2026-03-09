@@ -6,7 +6,7 @@ import { Text } from '@/components/text'
 import { VectorArrowDown2 } from '@/components/vector-arrow-down'
 import clsx from 'clsx'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 
 interface TImage {
   src: string
@@ -52,7 +52,7 @@ const FeatureSection1 = ({
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const }}
           className="relative"
         >
           <Heading
@@ -68,7 +68,7 @@ const FeatureSection1 = ({
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] as const }}
             className="flex-1/2 xl:flex-1/3"
           >
             <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full h-full">
@@ -87,7 +87,7 @@ const FeatureSection1 = ({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] as const }}
             className="flex flex-1/2 sm:justify-center xl:flex-2/3"
           >
             <div className="max-w-sm self-end">
@@ -126,7 +126,7 @@ const FeatureSection1 = ({
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: '-100px' }}
-        transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] as const }}
         className="flex flex-1/3"
       >
         <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full h-full">

@@ -61,7 +61,7 @@ const SectionCollectionCarousel = ({
         <Divider className="block lg:hidden" />
       </div>
 
-      <div className="mt-20 flex flex-wrap items-center justify-between gap-5">
+      {/* <div className="mt-20 flex flex-wrap items-center justify-between gap-5">
         <div className="flex flex-wrap gap-2">
           {groupCollections?.map((group) => (
             <Button
@@ -82,13 +82,13 @@ const SectionCollectionCarousel = ({
           nextBtnDisabled={nextBtnDisabled}
           prevBtnDisabled={prevBtnDisabled}
         />
-      </div>
+      </div> */}
 
-      <CarouselCollections
+      {/* <CarouselCollections
         className="mt-10"
         emblaRef={emblaRef}
         collections={groupCollections?.find((group) => group.handle === groupSelected)?.collections || []}
-      />
+      /> */}
     </div>
   )
 }

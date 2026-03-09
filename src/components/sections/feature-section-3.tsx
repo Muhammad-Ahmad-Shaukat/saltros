@@ -3,7 +3,7 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import Image from 'next/image'
 import { Button, ButtonCircle } from '../button'
 import { Heading } from '../heading'
@@ -44,7 +44,7 @@ interface FeatureSection3Props {
   }
 }
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -55,7 +55,7 @@ const containerVariants = {
   },
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
@@ -67,7 +67,7 @@ const itemVariants = {
   },
 }
 
-const imageVariants = {
+const imageVariants: Variants = {
   hidden: { opacity: 0, scale: 1.05 },
   visible: {
     opacity: 1,
