@@ -29,16 +29,16 @@ const FeatureSection1 = ({
   description = 'At Salt Rosa, we bridge the gap between ancient geological power and MODREN INTERIOR DESIGN. By sourcing only the finest mineral-rich salt, we ensure that every hand-carved piece and architectural brick serves as both a stunning visual focal point and a functional wellness tool. We don’t just provide decor; we curate the raw, grounding essence of nature to help you transform your home into a refined, restorative sanctuary.',
   heading = `<span>What makes us</span><br /><span data-slot="italic">Different? </span>`,
   image1 = {
-    src: '/images/hijab/feature-1-1.png',
+    src: '/images/oeister-salt-lamp.avif',
     width: 325,
     height: 325,
-    alt: 'feature-1-1',
+    alt: 'oeister-salt-lamp',
   },
   image2 = {
-    src: '/images/hijab/feature-1-2.png',
+    src: '/images/salt-decor-lamp.avif',
     width: 494,
     height: 529,
-    alt: 'feature-1-2',
+    alt: 'salt-decor-lamp',
   },
   buttonText = 'EXPLORE PRODUCTS',
   buttonLink = '/shop',
@@ -58,7 +58,7 @@ const FeatureSection1 = ({
             dangerouslySetInnerHTML={{ __html: heading }}
             className="max-w-[400px]"
           ></Heading>
-          <VectorArrowDown2 className="absolute start-60 top-1/2 hidden h-[150px] md:block 2xl:start-72 2xl:top-2/3 2xl:h-auto" />
+          {/* <VectorArrowDown2 className="absolute start-60 top-1/2 hidden h-[150px] md:block 2xl:start-72 2xl:top-2/3 2xl:h-auto" /> */}
         </motion.div>
 
         <div className="mt-auto flex flex-col gap-8 sm:flex-row lg:gap-6 xl:gap-2.5">
