@@ -1,4 +1,4 @@
-import { getBlogPosts } from '@/data'
+import { getBlogPosts } from '@/lib/static-data'
 import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import clsx from 'clsx'

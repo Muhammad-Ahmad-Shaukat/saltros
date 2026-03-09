@@ -2,7 +2,7 @@
 
 import CarouselBlogs from '@/components/carousel-blogs'
 import NextPrevButtons from '@/components/next-prev-btns'
-import { getBlogPosts } from '@/data'
+import { getBlogPosts } from '@/lib/static-data'
 import { useCarouselArrowButtons } from '@/hooks/use-carousel-arrow-buttons'
 import type { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'

@@ -1,6 +1,6 @@
 'use client'
 
-import { getBlogPosts } from '@/data'
+import { getBlogPosts } from '@/lib/static-data'
 import clsx from 'clsx'
 import { EmblaViewportRefType } from 'embla-carousel-react'
 import BlogPostCart from './blog-post-cart'
