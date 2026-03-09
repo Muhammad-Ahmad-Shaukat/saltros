@@ -1,5 +1,8 @@
+'use client'
+
 import { Logo } from '@/app/logo'
 import clsx from 'clsx'
+import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Text } from './text'
 
@@ -7,7 +10,6 @@ const navigation = {
   shop: [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Collections', href: '/collection/all' },
     { name: 'Cart', href: '/cart' },
     { name: 'Checkout', href: '/checkout' },
   ],
@@ -92,80 +94,138 @@ interface FooterProps {
   className?: string
 }
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      staggerChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+}
+
 export default function Footer({ className }: FooterProps) {
   return (
-    <footer className={clsx('bg-white pb-8', className)}>
-      <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-        <Logo />
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-100px' }}
+      variants={containerVariants}
+      className={clsx('bg-white pb-8 px-6 lg:px-8', className)}
+    >
+      <div className="xl:grid xl:grid-cols-3 xl:gap-8 border-t border-zinc-900/5 pt-16">
+        <motion.div variants={itemVariants} className="flex flex-col gap-6">
+          <Logo />
+          <Text className="text-sm text-zinc-500 max-w-xs">
+            Curated pieces for the modern home. Quality, sustainability, and timeless design.
+          </Text>
+        </motion.div>
         <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
           <div className="md:grid md:grid-cols-2 md:gap-8">
-            <div>
-              <Text className="text-sm/6 font-medium">Shop</Text>
+            <motion.div variants={itemVariants}>
+              <Text className="text-sm/6 font-semibold text-zinc-900">Shop</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.shop.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm/6 text-zinc-600 uppercase hover:text-zinc-900">
-                      {item.name}
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                      <span>{item.name}</span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        whileHover={{ width: '100%' }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="mt-10 md:mt-0">
-              <Text className="text-sm/6 font-medium">Support</Text>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mt-10 md:mt-0">
+              <Text className="text-sm/6 font-semibold text-zinc-900">Support</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.support.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm/6 text-zinc-600 uppercase hover:text-zinc-900">
-                      {item.name}
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                      <span>{item.name}</span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        whileHover={{ width: '100%' }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
           <div className="md:grid md:grid-cols-2 md:gap-8">
-            <div>
-              <Text className="text-sm/6 font-medium">Company</Text>
+            <motion.div variants={itemVariants}>
+              <Text className="text-sm/6 font-semibold text-zinc-900">Company</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm/6 text-zinc-600 uppercase hover:text-zinc-900">
-                      {item.name}
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                      <span>{item.name}</span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        whileHover={{ width: '100%' }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="mt-10 md:mt-0">
-              <Text className="text-sm/6 font-medium">Account</Text>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mt-10 md:mt-0">
+              <Text className="text-sm/6 font-semibold text-zinc-900">Account</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.account.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm/6 text-zinc-600 uppercase hover:text-zinc-900">
-                      {item.name}
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                      <span>{item.name}</span>
+                      <motion.span
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        whileHover={{ width: '100%' }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
-      <div className="mt-10 border-t border-zinc-900/10 pt-8 md:flex md:items-center md:justify-between">
-        <div className="flex gap-x-6 md:order-2">
+      <motion.div
+        variants={itemVariants}
+        className="mt-10 border-t border-zinc-900/10 pt-8 lg:flex lg:items-center lg:justify-between"
+      >
+        <div className="flex gap-x-6 lg:order-2">
           {navigation.social.map((item) => (
-            <Link key={item.name} href={item.href} className="text-zinc-600 hover:text-zinc-800">
-              <span className="sr-only">{item.name}</span>
-              <item.icon aria-hidden="true" className="size-6" />
-            </Link>
+            <motion.div
+              key={item.name}
+              whileHover={{ scale: 1.15, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+            >
+              <Link href={item.href} className="text-zinc-400 hover:text-zinc-900 transition-colors">
+                <span className="sr-only">{item.name}</span>
+                <item.icon aria-hidden="true" className="size-6" />
+              </Link>
+            </motion.div>
           ))}
         </div>
-        <Text className="mt-8 text-sm/6 text-zinc-600 md:order-1 md:mt-0">
-          &copy; 2026 Salt Rosa. All rights reserved.
+        <Text className="mt-8 text-sm/6 text-zinc-500 lg:order-1 lg:mt-0">
+          &copy; {new Date().getFullYear()} Salt Rosa. All rights reserved.
         </Text>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   )
 }

@@ -42,7 +42,7 @@ export default async function Home() {
       </div>
       <FeatureSection3
         className="mt-20 sm:mt-28 lg:mt-32"
-        heading={`Essentials for <span data-slot="italic">Muslim Women</span> , from Daily Scarves to Versatile Clothing.`}
+        heading={`Transform your <span data-slot="italic">Home with Nature</span> , with our premium salt gallery and gourmet essentials.`}
         collection1={{
           title: '<span data-slot="italic">Premium Salt</span> Lamps',
           desciption: 'The fabric is soft and smooth, making it easy to wear and style, and it is comfortable to wear.',

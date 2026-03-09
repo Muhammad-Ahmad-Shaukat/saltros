@@ -18,6 +18,7 @@ interface FeatureSection1Props {
   className?: string
   heading?: string
   description?: string
+  description2?: string
   image1?: TImage
   image2?: TImage
   buttonText?: string
@@ -26,7 +27,8 @@ interface FeatureSection1Props {
 
 const FeatureSection1 = ({
   className,
-  description = 'At Salt Rosa, we bridge the gap between ancient geological power and MODREN INTERIOR DESIGN. By sourcing only the finest mineral-rich salt, we ensure that every hand-carved piece and architectural brick serves as both a stunning visual focal point and a functional wellness tool. We don’t just provide decor; we curate the raw, grounding essence of nature to help you transform your home into a refined, restorative sanctuary.',
+  description = 'At Salt Rosa, we bridge the profound legacy of ancient geological formations with the vanguard of modern interior design. We don\'t merely source materials; we curate the rarest, mineral-rich salt to hand-craft architectural elements that redefine the luxury living space.',
+  description2 = 'Each hand-carved piece and artisan salt brick serves as a dual masterpiece: a striking visual focal point and a functional catalyst for holistic well-being. By integrating the raw, grounding essence of the natural world into the home, we help you transform your environment into a refined, restorative sanctuary.',
   heading = `<span>What makes us</span><br /><span data-slot="italic">Different? </span>`,
   image1 = {
     src: '/images/oeister-salt-lamp.avif',
@@ -90,6 +92,7 @@ const FeatureSection1 = ({
           >
             <div className="max-w-sm self-end">
               <Text dangerouslySetInnerHTML={{ __html: description }} className="leading-relaxed"></Text>
+              <Text dangerouslySetInnerHTML={{ __html: description2 }} className="leading-relaxed"></Text>
               <Button outline href={buttonLink} className="mt-7 transition-colors duration-300 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 group">
                 <span className="transition-all duration-300 group-hover:tracking-[0.15em]">{buttonText}</span>
               </Button>

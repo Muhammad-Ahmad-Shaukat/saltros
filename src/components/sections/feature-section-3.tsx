@@ -46,7 +46,7 @@ interface FeatureSection3Props {
 const FeatureSection3 = ({
   className,
   containerClassName = 'container',
-  heading = `Essentials for <span data-slot="italic">Muslim Women</span> , from Daily Scarves to Versatile Clothing.`,
+  heading = `Transform your <span data-slot="italic">Home with Nature</span> , with our premium salt gallery and gourmet essentials.`,
   collection1 = demo_collections[0],
   collection2 = demo_collections[1],
 }: FeatureSection3Props) => {
