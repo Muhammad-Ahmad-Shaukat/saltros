@@ -19,7 +19,7 @@ const demo_collections = [
     ],
   },
   {
-    title: '<span data-slot="italic">Premium Chiffon</span> Hijab',
+    title: '<span data-slot="italic">Premium Edible</span> Salt',
     desciption: 'Experience unparalleled comfort with our breathable hijabs, perfect for any season.',
     images: [
       '/images/hijab/essential-modal-1-1.webp',

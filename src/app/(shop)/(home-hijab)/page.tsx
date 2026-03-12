@@ -34,13 +34,13 @@ export default async function Home() {
             collectionDescription={collection?.description ?? undefined}
           />
         ))}
-      <FeatureSection1 className="container mt-24 sm:mt-28 lg:mt-40" />
+      <FeatureSection1 className="container mt-16 sm:mt-20 lg:mt-24" />
       <FeatureSection2 className="container mt-20 sm:mt-28 lg:mt-32" />
-      <div className="container mt-12 sm:mt-28 lg:mt-40">
+      <div className="container mt-8 sm:mt-12 lg:mt-16">
         <Divider />
       </div>
       <FeatureSection3
-        className="mt-20 sm:mt-28 lg:mt-32"
+        className="mt-0 pt-0"
         heading={`Transform your <span data-slot="italic">Home with Nature</span> , with our premium salt gallery and gourmet essentials.`}
         collection1={{
           title: '<span data-slot="italic">Premium Salt</span> Lamps',
@@ -54,7 +54,7 @@ export default async function Home() {
           ],
         }}
         collection2={{
-          title: '<span data-slot="italic">Premium Chiffon</span> Hijab',
+          title: '<span data-slot="italic">Premium Edible</span> Salt',
           desciption: 'Experience unparalleled comfort with our breathable hijabs, perfect for any season.',
           images: [
             '/images/hijab/essential-modal-1-1.webp',

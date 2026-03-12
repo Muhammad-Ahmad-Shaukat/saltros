@@ -15,7 +15,7 @@ const SearchIconPopover = () => {
 
       <PopoverPanel
         transition
-        className="bitpan-popover-full-panel absolute inset-x-0 top-0 -z-10 bg-white pt-[5.1rem] text-zinc-950 shadow-xl transition data-closed:-translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-100 data-leave:ease-in dark:bg-zinc-800 dark:text-zinc-100"
+        className="bitpan-popover-full-panel absolute inset-x-0 top-0 -z-10 bg-zinc-950 pt-[5.1rem] text-white shadow-xl transition data-closed:-translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-100 data-leave:ease-in border-b border-white/10"
       >
         <div className="container flex justify-center py-4">
           <div className="flex w-full max-w-xl flex-col">
@@ -25,8 +25,9 @@ const SearchIconPopover = () => {
                 data-autofocus
                 autoFocus
                 type="text"
-                className="w-full !border-none px-4 py-2 text-sm/6 uppercase !ring-0 focus-visible:outline-none"
+                className="w-full !border-none px-4 py-2 text-sm/6 uppercase bg-transparent text-white !ring-0 focus-visible:outline-none placeholder:text-zinc-500"
                 name="q"
+                placeholder="Search products..."
                 aria-label="Search for products"
                 autoComplete="off"
                 autoCorrect="off"
@@ -38,17 +39,17 @@ const SearchIconPopover = () => {
                 <HugeiconsIcon icon={Cancel01Icon} size={24} color="currentColor" strokeWidth={1} />
               </CloseButton>
             </div>
-            <Divider className="my-4 block md:hidden" />
+            <Divider className="my-4 block md:hidden border-white/10" />
             <div className="block text-xs/6 text-zinc-500 uppercase md:hidden">
               Press{' '}
               <TextLink
                 href={'/search'}
-                className="rounded-sm bg-zinc-100 px-1.5 py-0.5 text-xs font-medium text-zinc-900"
+                className="rounded-sm bg-white/10 px-1.5 py-0.5 text-xs font-medium text-white"
               >
                 <kbd className="text-xs font-medium">Enter</kbd>
               </TextLink>{' '}
               to search or{' '}
-              <kbd className="rounded-sm bg-zinc-100 px-1.5 py-0.5 text-xs font-medium text-zinc-900">
+              <kbd className="rounded-sm bg-white/10 px-1.5 py-0.5 text-xs font-medium text-white">
                 <span className="text-xs font-medium">Esc</span>
               </kbd>{' '}
               to cancel

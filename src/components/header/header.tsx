@@ -46,15 +46,15 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
       className={clsx(
         className,
         'group z-10 w-full',
-        variant === 'default' && 'relative',
+        variant === 'default' && 'relative bg-zinc-950 text-white',
         variant === 'bg-transparent-text-white' &&
-          'absolute inset-x-0 top-0 bg-transparent text-white transition-colors duration-300 has-[.bitpan-popover-full-panel]:text-zinc-950'
+          'absolute inset-x-0 top-0 bg-transparent text-white transition-colors duration-300 has-[.bitpan-popover-full-panel]:text-white lg:has-[.bitpan-popover-full-panel]:bg-zinc-950'
       )}
     >
       <nav aria-label="Global" className="container">
         <div
           className={clsx(
-            'flex items-center justify-between border-zinc-950/10 py-6 dark:border-white/10',
+            'flex items-center justify-between border-white/10 py-6',
             hasBottomBorder && 'border-b',
             !hasBottomBorder && 'has-[.bitpan-popover-full-panel]:border-b'
           )}
@@ -70,10 +70,10 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
           {/* MAIN CENTER MENUS */}
           <div className="hidden lg:flex lg:items-center lg:gap-x-8">
             {/* HOMEPAGE LINK */}
-            <TextLink href="/">Home</TextLink>
+            <TextLink href="/" className="hover:text-zinc-300 transition-colors">Home</TextLink>
 
             {/* TEXT LINKS */}
-            <TextLink href="/shop">Shop</TextLink>
+            <TextLink href="/shop" className="hover:text-zinc-300 transition-colors">Shop</TextLink>
 
             {/* MEGA MENU */}
             <MegaMenuPopover
@@ -88,7 +88,7 @@ const Header = async ({ className, hasBottomBorder = true, variant = 'default', 
               Explore
             </MegaMenuPopover>
 
-            <TextLink href="/checkout">Checkout</TextLink>
+            <TextLink href="/checkout" className="hover:text-zinc-300 transition-colors">Checkout</TextLink>
           </div>
 
           {/* RIGHT ICON BUTTONS */}

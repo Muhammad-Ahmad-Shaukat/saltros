@@ -118,26 +118,26 @@ export default function Footer({ className }: FooterProps) {
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
-      className={clsx('bg-white pb-8 px-6 lg:px-8', className)}
+      className={clsx('bg-zinc-950 text-white pb-8 px-6 lg:px-8', className)}
     >
-      <div className="xl:grid xl:grid-cols-3 xl:gap-8 border-t border-zinc-900/5 pt-16">
+      <div className="xl:grid xl:grid-cols-3 xl:gap-8 border-t border-white/10 pt-16">
         <motion.div variants={itemVariants} className="flex flex-col gap-6">
           <Logo />
-          <Text className="text-sm text-zinc-500 max-w-xs">
+          <Text className="text-sm text-zinc-400 max-w-xs normal-case">
             Sculpting Luxury from Nature’s Purest Salt.
           </Text>
         </motion.div>
         <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
           <div className="md:grid md:grid-cols-2 md:gap-8">
             <motion.div variants={itemVariants}>
-              <Text className="text-sm/6 font-semibold text-zinc-900">Shop</Text>
+              <Text className="text-sm/6 font-semibold text-white">Shop</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.shop.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-400 uppercase transition-colors hover:text-white">
                       <span>{item.name}</span>
                       <motion.span
-                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-white"
                         whileHover={{ width: '100%' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       />
@@ -147,14 +147,14 @@ export default function Footer({ className }: FooterProps) {
               </ul>
             </motion.div>
             <motion.div variants={itemVariants} className="mt-10 md:mt-0">
-              <Text className="text-sm/6 font-semibold text-zinc-900">Support</Text>
+              <Text className="text-sm/6 font-semibold text-white">Support</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.support.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-400 uppercase transition-colors hover:text-white">
                       <span>{item.name}</span>
                       <motion.span
-                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-white"
                         whileHover={{ width: '100%' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       />
@@ -166,14 +166,14 @@ export default function Footer({ className }: FooterProps) {
           </div>
           <div className="md:grid md:grid-cols-2 md:gap-8">
             <motion.div variants={itemVariants}>
-              <Text className="text-sm/6 font-semibold text-zinc-900">Company</Text>
+              <Text className="text-sm/6 font-semibold text-white">Company</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-400 uppercase transition-colors hover:text-white">
                       <span>{item.name}</span>
                       <motion.span
-                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-white"
                         whileHover={{ width: '100%' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       />
@@ -183,14 +183,14 @@ export default function Footer({ className }: FooterProps) {
               </ul>
             </motion.div>
             <motion.div variants={itemVariants} className="mt-10 md:mt-0">
-              <Text className="text-sm/6 font-semibold text-zinc-900">Account</Text>
+              <Text className="text-sm/6 font-semibold text-white">Account</Text>
               <ul role="list" className="mt-6 space-y-4">
                 {navigation.account.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="group relative text-sm/6 text-zinc-600 uppercase transition-colors hover:text-zinc-900">
+                    <Link href={item.href} className="group relative text-sm/6 text-zinc-400 uppercase transition-colors hover:text-white">
                       <span>{item.name}</span>
                       <motion.span
-                        className="absolute -bottom-1 left-0 h-px w-0 bg-zinc-900"
+                        className="absolute -bottom-1 left-0 h-px w-0 bg-white"
                         whileHover={{ width: '100%' }}
                         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                       />
@@ -205,7 +205,7 @@ export default function Footer({ className }: FooterProps) {
 
       <motion.div
         variants={itemVariants}
-        className="mt-10 border-t border-zinc-900/10 pt-8 lg:flex lg:items-center lg:justify-between"
+        className="mt-10 border-t border-white/10 pt-8 lg:flex lg:items-center lg:justify-between"
       >
         <div className="flex gap-x-6 lg:order-2">
           {navigation.social.map((item) => (
@@ -215,14 +215,14 @@ export default function Footer({ className }: FooterProps) {
               whileTap={{ scale: 0.95 }}
               transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
-              <Link href={item.href} className="text-zinc-400 hover:text-zinc-900 transition-colors">
+              <Link href={item.href} className="text-zinc-500 hover:text-white transition-colors">
                 <span className="sr-only">{item.name}</span>
                 <item.icon aria-hidden="true" className="size-6" />
               </Link>
             </motion.div>
           ))}
         </div>
-        <Text className="mt-8 text-sm/6 text-zinc-500 lg:order-1 lg:mt-0">
+        <Text className="mt-8 text-sm/6 text-zinc-400 lg:order-1 lg:mt-0 normal-case">
           &copy; {new Date().getFullYear()} Salt Rosa. All rights reserved.
         </Text>
       </motion.div>

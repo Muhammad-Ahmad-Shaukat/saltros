@@ -25,7 +25,7 @@ export default async function Home() {
       <SectionCollectionCarousel className="container mt-20 sm:mt-28 lg:mt-28" groupCollections={groupCollections} />
 
       <FeatureSection1
-        className="container mt-24 sm:mt-28 lg:mt-40"
+        className="container mt-16 sm:mt-20 lg:mt-24"
         image1={{
           src: '/images/skincare/feature-1.webp',
           width: 325,

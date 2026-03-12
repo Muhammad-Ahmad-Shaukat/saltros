@@ -42,48 +42,48 @@ const UserIconPopover = ({ user }: UserIconPopoverProps) => {
 
       <PopoverPanel
         transition
-        className="absolute top-full -right-5 -z-10 mt-6 flex w-56 flex-col gap-y-0.5 bg-white px-2.5 pt-6 pb-5 text-zinc-950 shadow-lg transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in dark:bg-zinc-800 dark:text-zinc-100"
+        className="absolute top-full -right-5 -z-10 mt-6 flex w-56 flex-col gap-y-0.5 bg-zinc-950 px-2.5 pt-6 pb-5 text-white shadow-lg transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-150 data-enter:ease-out data-leave:duration-100 data-leave:ease-in border border-white/10"
       >
         {user ? (
           <>
-            <div className="border-b border-zinc-200 px-2 pb-2 dark:border-zinc-700 sm:px-3">
-              <Text className="truncate text-sm font-medium">{user.name || user.email}</Text>
-              <Text className="truncate text-xs text-zinc-500">{user.email}</Text>
+            <div className="border-b border-white/10 px-2 pb-4 mb-2 sm:px-3">
+              <Text className="truncate text-sm font-semibold text-white">{user.name || user.email}</Text>
+              <Text className="truncate text-xs text-zinc-400 normal-case">{user.email}</Text>
             </div>
             {userMenu.map((item) => (
               <TextLink
                 href={item.href}
                 key={item.name}
-                className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
+                className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-white/5 sm:gap-x-5 sm:px-3 transition-colors text-zinc-300 hover:text-white"
               >
                 <HugeiconsIcon icon={item.icon} size={20} color="currentColor" strokeWidth={1} />
-                <Text>{item.name}</Text>
+                <Text className="text-inherit">{item.name}</Text>
               </TextLink>
             ))}
             <button
               type="button"
               onClick={handleSignOut}
-              className="flex w-full items-center gap-x-3.5 px-2 py-2 text-left hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
+              className="flex w-full items-center gap-x-3.5 px-2 py-2 text-left hover:bg-white/5 sm:gap-x-5 sm:px-3 transition-colors text-zinc-300 hover:text-white group"
             >
               <HugeiconsIcon icon={Logout01Icon} size={20} color="currentColor" strokeWidth={1} />
-              <Text>Sign out</Text>
+              <Text className="text-inherit">Sign out</Text>
             </button>
           </>
         ) : (
           <>
             <TextLink
               href="/login"
-              className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
+              className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-white/5 sm:gap-x-5 sm:px-3 transition-colors text-zinc-300 hover:text-white"
             >
               <HugeiconsIcon icon={UserCircleIcon} size={20} color="currentColor" strokeWidth={1} />
-              <Text>Login</Text>
+              <Text className="text-inherit">Login</Text>
             </TextLink>
             <TextLink
               href="/register"
-              className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-zinc-50 sm:gap-x-5 sm:px-3 dark:hover:bg-zinc-900"
+              className="flex items-center gap-x-3.5 px-2 py-2 hover:bg-white/5 sm:gap-x-5 sm:px-3 transition-colors text-zinc-300 hover:text-white"
             >
               <HugeiconsIcon icon={UserListIcon} size={20} color="currentColor" strokeWidth={1} />
-              <Text>Sign up</Text>
+              <Text className="text-inherit">Sign up</Text>
             </TextLink>
           </>
         )}
