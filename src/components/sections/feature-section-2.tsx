@@ -5,6 +5,7 @@ import { TImage } from '@/type'
 import { MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { useState } from 'react'
 import { Heading } from '../heading'
 import { Text } from '../text'
 import { motion } from 'framer-motion'
@@ -56,8 +57,10 @@ const FeatureSection2 = ({
   faqs = faqs_demo,
   image = image_demo,
 }: FeatureSection2Props) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
+
   return (
-    <div className={clsx('flex flex-col justify-between gap-8 lg:flex-row', className)}>
+    <div className={clsx('flex flex-col justify-between gap-8 lg:flex-row pb-12 sm:pb-20 lg:pb-32', className)}>
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -65,7 +68,7 @@ const FeatureSection2 = ({
         transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
         className="relative flex-1/2 2xl:flex-3/7"
       >
-        <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full h-full">
+        <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full max-h-[400px] sm:max-h-[500px] lg:max-h-none h-full">
           <Image
             src={image?.src ?? '/images/placeholder.svg'}
             width={image?.width ?? 800}
@@ -99,31 +102,47 @@ const FeatureSection2 = ({
           )}
 
           <dl className="divide-y divide-zinc-900/10 dark:divide-white/10">
-            {faqs.map((faq, index) => (
-              <motion.div 
-                key={faq.question} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
-                className="group py-6 first:pt-4 last:pb-0 overflow-hidden cursor-default"
-              >
-                <dt>
-                  <div className="flex w-full justify-between text-start transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-300">
-                    <Text className="font-medium transition-transform duration-300 ease-out group-hover:translate-x-1">{faq.question}</Text>
-                    <span className="ms-6 self-center text-zinc-600 dark:text-zinc-400">
-                      <PlusIcon aria-hidden="true" className="size-5 block group-hover:hidden transition-transform duration-300" />
-                      <MinusIcon aria-hidden="true" className="size-5 hidden group-hover:block transition-transform duration-300" />
-                    </span>
-                  </div>
-                </dt>
-                <dd className="grid grid-rows-[0fr] transition-all duration-500 ease-in-out group-hover:grid-rows-[1fr] mt-0 group-hover:mt-4 opacity-0 group-hover:opacity-100">
-                  <div className="overflow-hidden">
-                    <Text className="max-w-sm text-zinc-500 dark:text-zinc-400 leading-relaxed ps-1">{faq.answer}</Text>
-                  </div>
-                </dd>
-              </motion.div>
-            ))}
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index
+              return (
+                <motion.div 
+                  key={faq.question} 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1, ease: 'easeOut' }}
+                  className="group py-6 first:pt-4 last:pb-0 overflow-hidden"
+                >
+                  <dt>
+                    <button 
+                      onClick={() => setOpenIndex(isOpen ? null : index)}
+                      className="flex w-full justify-between text-start transition-colors hover:text-zinc-600 dark:hover:text-zinc-300"
+                    >
+                      <Text className={clsx('font-medium transition-all duration-300 ease-out', isOpen && 'translate-x-1 text-zinc-950 dark:text-white')}>
+                        {faq.question}
+                      </Text>
+                      <span className="ms-6 self-center text-zinc-600 dark:text-zinc-400">
+                        {isOpen ? (
+                          <MinusIcon aria-hidden="true" className="size-5 transition-transform duration-300 rotate-180" />
+                        ) : (
+                          <PlusIcon aria-hidden="true" className="size-5 transition-transform duration-300" />
+                        )}
+                      </span>
+                    </button>
+                  </dt>
+                  <dd 
+                    className={clsx(
+                      'grid transition-all duration-500 ease-in-out mt-0 opacity-0 overflow-hidden',
+                      isOpen ? 'grid-rows-[1fr] mt-4 opacity-100' : 'grid-rows-[0fr]'
+                    )}
+                  >
+                    <div className="overflow-hidden">
+                      <Text className="max-w-sm text-zinc-500 dark:text-zinc-400 leading-relaxed ps-1">{faq.answer}</Text>
+                    </div>
+                  </dd>
+                </motion.div>
+              )
+            })}
           </dl>
         </div>
       </div>

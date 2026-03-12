@@ -30,7 +30,7 @@ const SectionBiggestHeading: React.FC<SectionBiggestHeadingProps> = ({
       >
         {heading}
       </motion.h1>
-      <div className="mt-4 flex flex-wrap justify-between text-sm tracking-wide uppercase 2xl:mt-5 overflow-hidden">
+      <div className="mt-4 flex flex-wrap justify-center sm:justify-between text-sm tracking-wide uppercase 2xl:mt-5 overflow-hidden">
         {features.map((feature, index) => (
           <motion.div
             key={index}

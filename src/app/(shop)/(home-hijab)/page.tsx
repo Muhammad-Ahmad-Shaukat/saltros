@@ -36,7 +36,7 @@ export default async function Home() {
         ))}
       <FeatureSection1 className="container mt-24 sm:mt-28 lg:mt-40" />
       <FeatureSection2 className="container mt-20 sm:mt-28 lg:mt-32" />
-      <div className="container mt-24 sm:mt-28 lg:mt-40">
+      <div className="container mt-12 sm:mt-28 lg:mt-40">
         <Divider />
       </div>
       <FeatureSection3

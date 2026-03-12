@@ -96,7 +96,7 @@ const FeatureSection1 = ({
               <Button 
                 outline 
                 href={buttonLink} 
-                className="group relative mt-7 overflow-hidden border-zinc-900/10 transition-colors duration-500 hover:text-white dark:hover:text-zinc-900"
+                className="group relative mt-7 overflow-hidden border-zinc-950 transition-colors duration-500 hover:text-white dark:hover:text-zinc-900 shadow-sm"
               >
                 <span className="relative z-10 flex items-center gap-2 transition-transform duration-500 group-hover:translate-x-1">
                   {buttonText}

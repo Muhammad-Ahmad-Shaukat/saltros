@@ -124,7 +124,7 @@ export default function Footer({ className }: FooterProps) {
         <motion.div variants={itemVariants} className="flex flex-col gap-6">
           <Logo />
           <Text className="text-sm text-zinc-500 max-w-xs">
-            Curated pieces for the modern home. Quality, sustainability, and timeless design.
+            Sculpting Luxury from Nature’s Purest Salt.
           </Text>
         </motion.div>
         <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">

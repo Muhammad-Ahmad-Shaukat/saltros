@@ -71,7 +71,7 @@ export default async function Home() {
         }}
       />
 
-      <div className="container mt-24 sm:mt-28 lg:mt-40">
+      <div className="container mt-12 sm:mt-28 lg:mt-40">
         <Divider />
       </div>
 
