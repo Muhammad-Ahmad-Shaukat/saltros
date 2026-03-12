@@ -7,7 +7,7 @@ const data = [
   {
     id: 1,
     title: 'DESIGNED TO LAST',
-    description: 'These designs will last in your wardrobe, forever.',
+    description: 'These designs will last in your home, forever.',
     icon: AiIdeaIcon,
   },
   {
@@ -24,8 +24,8 @@ const data = [
   },
   {
     id: 4,
-    title: 'SHOPPAY & AFTERPAY',
-    description: 'Pay in 4 installments, no interest. No fees, no interest.',
+    title: 'WORTH THE PRICE',
+    description: 'You get what you pay for, and it is worth it.',
     icon: CoinsDollarIcon,
   },
   {

@@ -1,62 +1,68 @@
 'use client'
 
-import CarouselBlogs from '@/components/carousel-blogs'
 import NextPrevButtons from '@/components/next-prev-btns'
-import { getBlogPosts } from '@/lib/static-data'
+import { getGroupCollections } from '@/data'
 import { useCarouselArrowButtons } from '@/hooks/use-carousel-arrow-buttons'
 import type { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
+import { useState } from 'react'
 import { Button } from '../button'
+import CarouselCollections from '../carousel-collections'
 import { Divider } from '../divider'
 import { Heading } from '../heading'
 import { Text } from '../text'
-import { motion } from 'framer-motion'
 
-interface SectionBlogCarouselProps {
+interface SectionCollectionCarouselProps {
   emblaOptions?: EmblaOptionsType
   className?: string
   sectonTitle?: string
+  groupCollections: Awaited<ReturnType<typeof getGroupCollections>>
 }
 
-const SectionBlogCarousel = ({
+const SectionCollectionCarousel = ({
   emblaOptions = {
     slidesToScroll: 'auto',
   },
   className,
-  sectonTitle = 'Explore our <span data-slot="italic">Latest Stories</span> and insights.',
-}: SectionBlogCarouselProps) => {
+  sectonTitle = 'Find your own <span data-slot="italic">unique style,</span> and thousands <br /> of brands.',
+  groupCollections,
+}: SectionCollectionCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions)
+  const [groupSelected, setGroupSelected] = useState<string>(groupCollections?.[0]?.handle || '')
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = useCarouselArrowButtons(emblaApi)
-  
-  const blogs = getBlogPosts().slice(0, 5)
 
   return (
     <div className={className}>
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="flex flex-col justify-between gap-8 lg:flex-row"
-      >
+      <div className="flex flex-col justify-between gap-8 lg:flex-row">
         <div className="flex-2/3">
           <Heading className="max-w-2xl" bigger dangerouslySetInnerHTML={{ __html: sectonTitle || '' }} />
         </div>
 
         <div className="flex-1/3">
-          <Text>Dive into our world of wellness, design, and artisan crafting.</Text>
-          <Button outline href={'/blog'} className="mt-4 group">
-            <span className="group-hover:tracking-wider transition-all duration-300">VIEW ALL BLOGS</span>
+          <Text>Get 15% discount on your first order!</Text>
+          <Button outline href={'/collection/all'} className="mt-4">
+            SHOP NOW
           </Button>
         </div>
 
         <Divider className="block lg:hidden" />
-      </motion.div>
+      </div>
 
-      <div className="mt-16 flex items-center justify-between gap-5 border-b border-zinc-100 pb-8">
-        <Text className="text-zinc-500 uppercase tracking-widest text-xs font-semibold">Featured Articles</Text>
+      <div className="mt-20 flex flex-wrap items-center justify-between gap-5">
+        <div className="flex flex-wrap gap-2">
+          {groupCollections?.map((group) => (
+            <Button
+              key={group.handle}
+              onClick={() => setGroupSelected(group.handle)}
+              outline={groupSelected !== group.handle}
+            >
+              {group.title}
+            </Button>
+          ))}
+        </div>
+
         <NextPrevButtons
-          className="ms-auto"
+          className="ms-auto xl:ms-0"
           onNextClick={onNextButtonClick}
           onPrevClick={onPrevButtonClick}
           nextBtnDisabled={nextBtnDisabled}
@@ -64,13 +70,13 @@ const SectionBlogCarousel = ({
         />
       </div>
 
-      <CarouselBlogs
+      <CarouselCollections
         className="mt-10"
         emblaRef={emblaRef}
-        posts={blogs}
+        collections={groupCollections?.find((group) => group.handle === groupSelected)?.collections || []}
       />
     </div>
   )
 }
 
-export default SectionBlogCarousel
+export default SectionCollectionCarousel
