@@ -118,7 +118,7 @@ export default function Footer({ className }: FooterProps) {
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
       variants={containerVariants}
-      className={clsx('bg-zinc-950 text-white pb-8 px-6 lg:px-8', className)}
+      className={clsx('bg-zinc-950 text-white pb-8 px-6 lg:px-8 rounded-t-[3rem] shadow-2xl mt-20', className)}
     >
       <div className="xl:grid xl:grid-cols-3 xl:gap-8 border-t border-white/10 pt-16">
         <motion.div variants={itemVariants} className="flex flex-col gap-6">

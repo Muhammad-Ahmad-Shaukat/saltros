@@ -4,6 +4,7 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import clsx from 'clsx'
 import { Text } from '../text'
 import { motion } from 'framer-motion'
+import PixelCard from '../PixelCard'
 
 const data = [
   {
@@ -21,7 +22,7 @@ const data = [
   {
     id: 3,
     title: '5 STAR CARE',
-    description: 'We\'re here for you anytime, <span class="underline text-zinc-900 font-medium">contact@saltrosa.com</span>',
+    description: 'We\'re here for you anytime, <span class="underline text-zinc-900 font-medium normal-case">contact@saltrosa.com</span>',
     icon: Mailbox01Icon,
   },
   {
@@ -44,33 +45,45 @@ interface FeatureSection4Props {
 
 const FeatureSection4 = ({ className }: FeatureSection4Props) => {
   return (
-    <div className={clsx('grid grid-cols-1 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5', className)}>
-      {data.map((item, index, arr) => (
+    <div className={clsx('grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 container', className)}>
+      {data.map((item, index) => (
         <motion.div
           key={item.id}
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-          whileHover={{ y: -5, backgroundColor: 'rgba(250, 250, 250, 1)', transition: { duration: 0.2 } }}
-          className={clsx(
-            'flex flex-col gap-2 border border-zinc-100 border-l-transparent px-4 py-8 sm:px-8 sm:py-10 transition-all duration-300 group',
-            index === arr.length - 1 ? 'sm:border-r-transparent' : 'bg-white'
-          )}
+          className="h-full"
         >
-          <Text className="text-zinc-500 font-mono text-xs tracking-widest transition-colors group-hover:text-zinc-900">({String(index + 1).padStart(2, '0')})</Text>
-          <Text className="mt-4 font-semibold tracking-wide text-zinc-900">{item.title}</Text>
-          <div className="mt-10 mb-2 transform transition-transform duration-300 group-hover:scale-110 origin-left">
-            <HugeiconsIcon icon={item.icon} size={40} className="text-zinc-800" strokeWidth={1} />
-          </div>
-          <Text
-            className="mt-6 line-clamp-3 text-sm leading-relaxed text-zinc-500 transition-colors group-hover:text-zinc-600"
-            dangerouslySetInnerHTML={{ __html: item.description }}
-          ></Text>
-          
-          <div className="mt-auto pt-6">
-            <div className="h-0.5 w-0 bg-zinc-900 transition-all duration-500 group-hover:w-full" />
-          </div>
+          <PixelCard 
+            variant="default" 
+            className="!p-0 border-zinc-200"
+            colors="#f8fafc,#f1f5f9,#cbd5e1"
+            gap={6}
+          >
+            <div className="flex flex-col h-full p-8 transition-all duration-300 group">
+              <Text className="text-zinc-400 font-mono text-[10px] tracking-widest transition-colors group-hover:text-zinc-900">
+                ({String(index + 1).padStart(2, '0')})
+              </Text>
+              
+              <Text className="mt-6 font-bold tracking-widest text-zinc-900 text-xs sm:text-sm">
+                {item.title}
+              </Text>
+              
+              <div className="mt-8 mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+                <HugeiconsIcon icon={item.icon} size={32} className="text-zinc-800" strokeWidth={1} />
+              </div>
+              
+              <Text
+                className="mt-4 line-clamp-3 text-sm leading-relaxed text-zinc-500 transition-colors group-hover:text-zinc-700 normal-case font-medium"
+                dangerouslySetInnerHTML={{ __html: item.description }}
+              ></Text>
+              
+              <div className="mt-auto pt-8">
+                <div className="h-[1px] w-8 bg-zinc-200 transition-all duration-500 group-hover:w-full group-hover:bg-zinc-950" />
+              </div>
+            </div>
+          </PixelCard>
         </motion.div>
       ))}
     </div>

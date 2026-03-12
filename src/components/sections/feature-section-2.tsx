@@ -68,7 +68,7 @@ const FeatureSection2 = ({
         transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
         className="relative flex-1/2 2xl:flex-3/7"
       >
-        <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full max-h-[400px] sm:max-h-[500px] lg:max-h-none h-full">
+        <div className="group relative overflow-hidden rounded-2xl shadow-sm transition-shadow duration-500 hover:shadow-xl w-full max-h-[70vh]">
           <Image
             src={image?.src ?? '/images/placeholder.svg'}
             width={image?.width ?? 800}
