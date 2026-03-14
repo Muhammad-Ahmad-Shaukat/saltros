@@ -116,16 +116,16 @@ const FeatureSection3 = ({
         </motion.div>
 
         {/* COLLECTION 1 */}
-        <div className="mt-24 flex flex-col gap-12 lg:flex-row lg:gap-0">
-          <motion.div variants={imageVariants} className="relative z-10 flex-1/2 group">
-            <div className="relative aspect-5/6 w-full overflow-hidden rounded-2xl bg-zinc-100">
-              <AnimatePresence mode="wait">
+        <div className="mt-24 flex flex-col gap-12 lg:flex-row lg:gap-16 xl:gap-24">
+          <motion.div variants={imageVariants} className="relative z-10 lg:w-1/2 group">
+            <div className="relative aspect-5/6 w-full overflow-hidden rounded-2xl bg-zinc-900">
+              <AnimatePresence>
                 <motion.div
                   key={activeImage1}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  transition={{ duration: 0.8, ease: 'easeInOut' }}
                   className="absolute inset-0"
                 >
                   <Image
@@ -141,7 +141,7 @@ const FeatureSection3 = ({
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 z-10 pointer-events-none transition-colors duration-500" />
             </div>
           </motion.div>
-          <motion.div variants={itemVariants} className="flex flex-1/2 flex-col gap-10 lg:self-center lg:ps-10 xl:ps-20">
+          <motion.div variants={itemVariants} className="flex lg:w-1/2 flex-col gap-10 lg:self-center">
             {/* Heading */}
             <div className="flex items-end justify-between gap-4 border-b border-zinc-900/10 pb-6">
               <Heading dangerouslySetInnerHTML={{ __html: collection1.title }} className="text-3xl lg:text-4xl"></Heading>
@@ -180,18 +180,22 @@ const FeatureSection3 = ({
             </div>
 
             {/* DESCRIPTION */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
-              <Text className="max-w-md text-zinc-600 leading-relaxed">{collection1.desciption}</Text>
-              <Button outline href={'#'} className="shrink-0 hover:bg-zinc-900 hover:text-white transition-colors">
-                DESCRIPTION
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
+              <Text className="max-w-md text-zinc-600 leading-relaxed whitespace-pre-wrap">{collection1.desciption}</Text>
+              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 !p-0 sm:mt-1 hover:!bg-transparent">
+                <span className="flex items-center gap-2 text-sm font-bold tracking-widest text-zinc-900 uppercase">
+                  DESCRIPTION
+                  <ArrowUpRightIcon strokeWidth={2} className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </span>
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-zinc-900 transition-all duration-500 group-hover:w-full" />
               </Button>
             </div>
           </motion.div>
         </div>
 
         {/* COLLECTION 2 */}
-        <div className="mt-32 flex flex-col-reverse gap-12 lg:flex-row lg:gap-0">
-          <motion.div variants={itemVariants} className="flex flex-1/2 flex-col gap-10 lg:self-center lg:pe-10 xl:pe-20">
+        <div className="mt-32 flex flex-col-reverse gap-12 lg:flex-row lg:gap-16 xl:gap-24">
+          <motion.div variants={itemVariants} className="flex lg:w-1/2 flex-col gap-10 lg:self-center">
             {/* Heading */}
             <div className="flex items-end justify-between gap-4 border-b border-zinc-900/10 pb-6">
               <Heading dangerouslySetInnerHTML={{ __html: collection2.title }} className="text-3xl lg:text-4xl"></Heading>
@@ -226,14 +230,18 @@ const FeatureSection3 = ({
             </div>
 
             {/* DESCRIPTION */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
-              <Text className="max-w-md text-zinc-600 leading-relaxed">{collection2.desciption}</Text>
-              <Button outline href={'#'} className="shrink-0 hover:bg-zinc-900 hover:text-white transition-colors">
-                DESCRIPTION
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
+              <Text className="max-w-md text-zinc-600 leading-relaxed whitespace-pre-wrap">{collection2.desciption}</Text>
+              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 !p-0 sm:mt-1 hover:!bg-transparent">
+                <span className="flex items-center gap-2 text-sm font-bold tracking-widest text-zinc-900 uppercase">
+                  DESCRIPTION
+                  <ArrowUpRightIcon strokeWidth={2} className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </span>
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-zinc-900 transition-all duration-500 group-hover:w-full" />
               </Button>
             </div>
           </motion.div>
-          <motion.div variants={imageVariants} className="relative z-10 flex-1/2 group">
+          <motion.div variants={imageVariants} className="relative z-10 lg:w-1/2 group">
             <div className="relative aspect-5/6 w-full overflow-hidden rounded-2xl">
               <Image
                 src={collection2.images[0]}

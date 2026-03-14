@@ -11,9 +11,9 @@ import clsx from 'clsx'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Hijab',
+  title: 'Salt Rosa',
   description:
-    'Discover the latest trends in fashion and style with our curated collection of clothing, accessories, and more.',
+    'Raw Salt. Refined Decor.',
 }
 
 export default async function Home() {
