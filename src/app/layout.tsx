@@ -3,6 +3,7 @@ import '@/styles/tailwind.css'
 import clsx from 'clsx'
 import type { Metadata } from 'next'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const dm_sans = DM_Sans({
   subsets: ['latin'],
