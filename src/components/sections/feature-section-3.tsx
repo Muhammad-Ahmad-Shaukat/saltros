@@ -182,7 +182,7 @@ const FeatureSection3 = ({
             {/* DESCRIPTION */}
             <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
               <Text className="max-w-md text-zinc-600 leading-relaxed whitespace-pre-wrap">{collection1.desciption}</Text>
-              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 !p-0 sm:mt-1 hover:!bg-transparent">
+              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 p-0! sm:mt-1 hover:bg-transparent!">
                 <span className="flex items-center gap-2 text-sm font-bold tracking-widest text-zinc-900 uppercase">
                   DESCRIPTION
                   <ArrowUpRightIcon strokeWidth={2} className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -232,7 +232,7 @@ const FeatureSection3 = ({
             {/* DESCRIPTION */}
             <div className="flex flex-col sm:flex-row items-start justify-between gap-6">
               <Text className="max-w-md text-zinc-600 leading-relaxed whitespace-pre-wrap">{collection2.desciption}</Text>
-              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 !p-0 sm:mt-1 hover:!bg-transparent">
+              <Button href={'#'} plain className="group relative overflow-hidden shrink-0 p-0! sm:mt-1 hover:bg-transparent!">
                 <span className="flex items-center gap-2 text-sm font-bold tracking-widest text-zinc-900 uppercase">
                   DESCRIPTION
                   <ArrowUpRightIcon strokeWidth={2} className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
