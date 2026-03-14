@@ -2,10 +2,11 @@
 
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
-import useEmblaCarousel from 'embla-carousel-react'
 import AutoScroll from 'embla-carousel-auto-scroll'
-import { motion, type Variants } from 'framer-motion'
+import useEmblaCarousel from 'embla-carousel-react'
+import { AnimatePresence, motion, type Variants } from 'framer-motion'
 import Image from 'next/image'
+import { useState } from 'react'
 import { Button, ButtonCircle } from '../button'
 import { Heading } from '../heading'
 import { Text } from '../text'
@@ -16,15 +17,13 @@ const demo_collections = [
     desciption: 'The fabric is soft and smooth, making it easy to wear and style, and it is comfortable to wear.',
     images: [
       '/images/hijab/premium-rayon-1.webp',
-      //  more images ...
     ],
   },
   {
     title: '<span data-slot="italic">Premium Edible</span> Salt',
-    desciption: 'Experience unparalleled comfort with our breathable hijabs, perfect for any season.',
+    desciption: 'At Salt Rosa, our premium edible Himalayan salt is sourced from ancient Himalayan reserves known for their exceptional purity and natural mineral richness. Carefully selected and processed to preserve its authentic character, our salt delivers a clean, balanced taste that enhances the natural flavor of your food. \nWhether used for everyday cooking, seasoning, or gourmet culinary creations, Salt Rosa edible salt brings both quality and authenticity to your kitchen. Its natural composition and distinctive taste make it a favorite choice for home cooks, professional chefs, and anyone who values pure, high-quality ingredients. \nWith SaltRosa.com, you’re not just adding salt to your meals—you’re choosing a product rooted in nature, tradition, and craftsmanship, designed to elevate every dish with simple, natural flavor.',
     images: [
-      '/images/hijab/essential-modal-1-1.webp',
-      //  more images ...
+      '/images/salts.avif',
     ],
   },
 ]
@@ -87,10 +86,11 @@ const FeatureSection3 = ({
   collection1 = demo_collections[0],
   collection2 = demo_collections[1],
 }: FeatureSection3Props) => {
+  const [activeImage1, setActiveImage1] = useState(collection1.images[0])
   const [emblaRef] = useEmblaCarousel({
     loop: true,
     dragFree: true,
-  }, [AutoScroll({ playOnInit: true, stopOnInteraction: false, speed: 1.2 })])
+  }, [AutoScroll({ playOnInit: true, stopOnInteraction: false, speed: 0.5 })])
   const [emblaRef2] = useEmblaCarousel({
     slidesToScroll: 'auto',
     startIndex: 9,
@@ -118,16 +118,27 @@ const FeatureSection3 = ({
         {/* COLLECTION 1 */}
         <div className="mt-24 flex flex-col gap-12 lg:flex-row lg:gap-0">
           <motion.div variants={imageVariants} className="relative z-10 flex-1/2 group">
-            <div className="relative aspect-5/6 w-full overflow-hidden rounded-2xl">
-              <Image
-                src={collection1.images[0]}
-                alt={'feature-section'}
-                fill
-                className="z-0 object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+            <div className="relative aspect-5/6 w-full overflow-hidden rounded-2xl bg-zinc-100">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeImage1}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={activeImage1}
+                    alt={'feature-section'}
+                    fill
+                    className="z-0 object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                    priority
+                  />
+                </motion.div>
+              </AnimatePresence>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 z-10 pointer-events-none transition-colors duration-500" />
             </div>
           </motion.div>
           <motion.div variants={itemVariants} className="flex flex-1/2 flex-col gap-10 lg:self-center lg:ps-10 xl:ps-20">
@@ -149,7 +160,9 @@ const FeatureSection3 = ({
                       key={index}
                       whileHover={{ y: -10, scale: 1.02 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      className="ms-4 min-w-0 embla__slide shrink-0 grow-0 basis-3/4 sm:basis-2/5 group/slide cursor-grab active:cursor-grabbing"
+                      onClick={() => setActiveImage1(image)}
+                      onMouseEnter={() => setActiveImage1(image)}
+                      className="ms-4 min-w-0 embla__slide shrink-0 grow-0 basis-3/4 sm:basis-2/5 group/slide cursor-pointer active:cursor-grabbing"
                     >
                       <div className="relative aspect-4/6 w-full overflow-hidden rounded-xl shadow-sm transition-all duration-500 hover:shadow-2xl">
                         <div className="absolute inset-0 bg-black/0 group-hover/slide:bg-black/10 transition-colors duration-500 z-10" />
