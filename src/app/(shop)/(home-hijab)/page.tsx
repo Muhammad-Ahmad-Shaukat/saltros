@@ -44,26 +44,26 @@ export default async function Home() {
         heading={`Transform your <span data-slot="italic">Home with Nature</span> , with our premium salt gallery and gourmet essentials.`}
         collection1={{
           title: '<span data-slot="italic">Premium Salt</span> Lamps',
-          desciption: 'The fabric is soft and smooth, making it easy to wear and style, and it is comfortable to wear.',
+          desciption: 'Shop authentic Himalayan salt lamps today at SaltRosa and experience the natural beauty of handcrafted salt decor.',
           images: [
-            '/images/hijab/premium-rayon-1.webp',
-            '/images/hijab/premium-rayon-2.webp',
-            '/images/hijab/premium-rayon-3.webp',
-            '/images/hijab/premium-rayon-4.webp',
-            '/images/hijab/premium-rayon-1.webp',
+            '/images/salt-lamps/dove.avif',
+            '/images/salt-lamps/nest-lamp.avif',
+            '/images/salt-lamps/heart-lamp.avif',
+            '/images/salt-lamps/sphere-lamp.avif',
+            '/images/salt-lamps/fire-pit-salt-lamp.avif',
           ],
         }}
-        collection2={{
-          title: '<span data-slot="italic">Premium Edible</span> Salt',
-          desciption: 'Experience unparalleled comfort with our breathable hijabs, perfect for any season.',
-          images: [
-            '/images/hijab/essential-modal-1-1.webp',
-            '/images/hijab/essential-modal-1-1.webp',
-            '/images/hijab/essential-modal-1.webp',
-            '/images/hijab/essential-modal-3.webp',
-            '/images/hijab/essential-modal-4.webp',
-          ],
-        }}
+        // collection2={{
+        //   title: '<span data-slot="italic">Premium Edible</span> Salt',
+        //   desciption: 'Experience unparalleled comfort with our breathable hijabs, perfect for any season.',
+        //   images: [
+        //     '/images/hijab/essential-modal-1-1.webp',
+        //     '/images/hijab/essential-modal-1-1.webp',
+        //     '/images/hijab/essential-modal-1.webp',
+        //     '/images/hijab/essential-modal-3.webp',
+        //     '/images/hijab/essential-modal-4.webp',
+        //   ],
+        // }}
       />
       <div className="container mt-20 sm:mt-28 lg:mt-32">
         <Divider />

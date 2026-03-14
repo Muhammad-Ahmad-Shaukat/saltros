@@ -4,7 +4,6 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import clsx from 'clsx'
 import { Text } from '../text'
 import { motion } from 'framer-motion'
-import PixelCard from '../PixelCard'
 
 const data = [
   {
@@ -55,35 +54,28 @@ const FeatureSection4 = ({ className }: FeatureSection4Props) => {
           transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
           className="h-full"
         >
-          <PixelCard 
-            variant="default" 
-            className="!p-0 border-zinc-200"
-            colors="#f8fafc,#f1f5f9,#cbd5e1"
-            gap={6}
-          >
-            <div className="flex flex-col h-full p-8 transition-all duration-300 group">
-              <Text className="text-zinc-400 font-mono text-[10px] tracking-widest transition-colors group-hover:text-zinc-900">
-                ({String(index + 1).padStart(2, '0')})
-              </Text>
-              
-              <Text className="mt-6 font-bold tracking-widest text-zinc-900 text-xs sm:text-sm">
-                {item.title}
-              </Text>
-              
-              <div className="mt-8 mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
-                <HugeiconsIcon icon={item.icon} size={32} className="text-zinc-800" strokeWidth={1} />
-              </div>
-              
-              <Text
-                className="mt-4 line-clamp-3 text-sm leading-relaxed text-zinc-500 transition-colors group-hover:text-zinc-700 normal-case font-medium"
-                dangerouslySetInnerHTML={{ __html: item.description }}
-              ></Text>
-              
-              <div className="mt-auto pt-8">
-                <div className="h-[1px] w-8 bg-zinc-200 transition-all duration-500 group-hover:w-full group-hover:bg-zinc-950" />
-              </div>
+          <div className="flex flex-col h-full border border-zinc-200 bg-white p-8 transition-all duration-300 group">
+            <Text className="text-zinc-400 font-mono text-[10px] tracking-widest transition-colors group-hover:text-zinc-900">
+              ({String(index + 1).padStart(2, '0')})
+            </Text>
+            
+            <Text className="mt-6 font-bold tracking-widest text-zinc-900 text-xs sm:text-sm">
+              {item.title}
+            </Text>
+            
+            <div className="mt-8 mb-4 transform transition-transform duration-500 group-hover:scale-110 origin-left">
+              <HugeiconsIcon icon={item.icon} size={32} className="text-zinc-800" strokeWidth={1} />
             </div>
-          </PixelCard>
+            
+            <Text
+              className="mt-4 line-clamp-3 text-sm leading-relaxed text-zinc-500 transition-colors group-hover:text-zinc-700 normal-case font-medium"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            ></Text>
+            
+            <div className="mt-auto pt-8">
+              <div className="h-[1px] w-8 bg-zinc-200 transition-all duration-500 group-hover:w-full group-hover:bg-zinc-950" />
+            </div>
+          </div>
         </motion.div>
       ))}
     </div>

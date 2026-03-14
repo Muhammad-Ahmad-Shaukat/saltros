@@ -3,6 +3,7 @@
 import { ArrowUpRightIcon } from '@heroicons/react/24/outline'
 import clsx from 'clsx'
 import useEmblaCarousel from 'embla-carousel-react'
+import AutoScroll from 'embla-carousel-auto-scroll'
 import { motion, type Variants } from 'framer-motion'
 import Image from 'next/image'
 import { Button, ButtonCircle } from '../button'
@@ -87,8 +88,9 @@ const FeatureSection3 = ({
   collection2 = demo_collections[1],
 }: FeatureSection3Props) => {
   const [emblaRef] = useEmblaCarousel({
-    slidesToScroll: 'auto',
-  })
+    loop: true,
+    dragFree: true,
+  }, [AutoScroll({ playOnInit: true, stopOnInteraction: false, speed: 1.2 })])
   const [emblaRef2] = useEmblaCarousel({
     slidesToScroll: 'auto',
     startIndex: 9,
@@ -145,15 +147,17 @@ const FeatureSection3 = ({
                   .map((image, index) => (
                     <motion.div
                       key={index}
-                      whileHover={{ y: -10 }}
-                      className="ms-4 min-w-0 embla__slide shrink-0 grow-0 basis-3/4 first:ms-0 sm:basis-2/5"
+                      whileHover={{ y: -10, scale: 1.02 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                      className="ms-4 min-w-0 embla__slide shrink-0 grow-0 basis-3/4 sm:basis-2/5 group/slide cursor-grab active:cursor-grabbing"
                     >
-                      <div className="relative aspect-4/6 w-full overflow-hidden rounded-xl shadow-sm transition-shadow hover:shadow-lg">
+                      <div className="relative aspect-4/6 w-full overflow-hidden rounded-xl shadow-sm transition-all duration-500 hover:shadow-2xl">
+                        <div className="absolute inset-0 bg-black/0 group-hover/slide:bg-black/10 transition-colors duration-500 z-10" />
                         <Image
                           src={image}
                           alt={'feature-section'}
                           fill
-                          className="z-0 object-cover transition-transform duration-500 hover:scale-110"
+                          className="z-0 object-cover transition-transform duration-700 ease-out group-hover/slide:scale-110"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         />
                       </div>
