@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import clsx from 'clsx'
 
-export function Logo({ className, ...props }: React.ComponentPropsWithoutRef<'img'>) {
+export function Logo({ className, style, ...props }: React.ComponentPropsWithoutRef<'img'>) {
   return (
     <Image
       src="/images/logo.png"
@@ -9,6 +9,11 @@ export function Logo({ className, ...props }: React.ComponentPropsWithoutRef<'im
       width={140}
       height={42}
       className={clsx('object-contain', className)}
+      style={{
+        width: 'auto',
+        height: 'auto',
+        ...style,
+      }}
       priority
       {...(props as any)}
     />

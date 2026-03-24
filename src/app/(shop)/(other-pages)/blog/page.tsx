@@ -1,15 +1,14 @@
 import BlogPostCart from '@/components/blog-post-cart'
 import { Divider } from '@/components/divider'
 import { Heading } from '@/components/heading'
-import { Pagination, PaginationList, PaginationNext, PaginationPage, PaginationPrevious } from '@/components/pagination'
 import { Text } from '@/components/text'
 import { getBlogPosts } from '@/data'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Blog',
+  title: 'Blog | Insights, Guides, and Stories',
   description:
-    'Stay up-to-date with the latest industry news as our marketing teams finds new ways to re-purpose old CSS tricks articles.',
+    'Read the latest Saltros blog posts, product guides, and wellness stories. Fresh, searchable, and SEO-optimized content for every visitor.',
 }
 
 export default async function Page() {
@@ -36,19 +35,6 @@ export default async function Page() {
           <BlogPostCart key={post.id} post={post} />
         ))}
       </div>
-
-      <Pagination className="mx-auto mt-14 sm:mt-28">
-        <PaginationPrevious href="?page=1" />
-        <PaginationList>
-          <PaginationPage href="?page=1" current>
-            1
-          </PaginationPage>
-          <PaginationPage href="?page=2">2</PaginationPage>
-          <PaginationPage href="?page=3">3</PaginationPage>
-          <PaginationPage href="?page=4">4</PaginationPage>
-        </PaginationList>
-        <PaginationNext href="?page=3" />
-      </Pagination>
 
       <Divider className="mt-16 sm:mt-24 lg:mt-28" />
     </div>

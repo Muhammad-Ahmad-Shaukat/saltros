@@ -50,7 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         playfair_display.variable
       )}
     >
-      <body>
+      <body suppressHydrationWarning>
 
         <Aside.Provider>{children}</Aside.Provider>
       </body>

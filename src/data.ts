@@ -100,7 +100,7 @@ export function getProductReviews() {
   ]
 }
 
-export { getBlogPosts, getBlogPostsByHandle } from '@/lib/static-data'
+export { getBlogPostByHandle, getBlogPostBySlug, getBlogPosts, getBlogSlugs } from '@/lib/blog'
 
 
 // ------------------------ SKINCARE DATA ------------------------
