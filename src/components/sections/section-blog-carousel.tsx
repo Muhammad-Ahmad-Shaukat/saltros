@@ -25,6 +25,7 @@ const SectionBlogCarousel = ({
   },
   className,
   sectonTitle = 'Explore our <span data-slot="italic">Latest Stories</span> and insights.',
+  posts,
 }: SectionBlogCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = useCarouselArrowButtons(emblaApi)
