@@ -6,7 +6,7 @@ import HeroSection1 from '@/components/sections/hero-section-1'
 import SectionBiggestHeading from '@/components/sections/section-biggest-heading'
 import SectionBlogCarousel from '@/components/sections/section-blog-carousel'
 import SectionProductCarousel from '@/components/sections/section-product-carousel'
-import { getCollections } from '@/data'
+import { getBlogPosts, getCollections } from '@/data'
 import clsx from 'clsx'
 import { Metadata } from 'next'
 
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   let collections = await getCollections('hijab')
+  const blogPosts = await getBlogPosts()
   return (
     <div>
       <HeroSection1 className="container mt-14" />
@@ -68,7 +69,7 @@ export default async function Home() {
       <div className="container mt-20 sm:mt-28 lg:mt-32">
         <Divider />
       </div>
-      <SectionBlogCarousel className="container mt-20" />
+      <SectionBlogCarousel className="container mt-20" posts={blogPosts.slice(0, 5)} />
     </div>
   )
 }

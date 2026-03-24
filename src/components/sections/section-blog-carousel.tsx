@@ -2,7 +2,7 @@
 
 import CarouselBlogs from '@/components/carousel-blogs'
 import NextPrevButtons from '@/components/next-prev-btns'
-import { getBlogPosts } from '@/lib/static-data'
+import { BlogPost } from '@/lib/blog'
 import { useCarouselArrowButtons } from '@/hooks/use-carousel-arrow-buttons'
 import type { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
@@ -16,6 +16,7 @@ interface SectionBlogCarouselProps {
   emblaOptions?: EmblaOptionsType
   className?: string
   sectonTitle?: string
+  posts: BlogPost[]
 }
 
 const SectionBlogCarousel = ({
@@ -27,8 +28,6 @@ const SectionBlogCarousel = ({
 }: SectionBlogCarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(emblaOptions)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } = useCarouselArrowButtons(emblaApi)
-  
-  const blogs = getBlogPosts().slice(0, 5)
 
   return (
     <div className={className}>
@@ -67,7 +66,7 @@ const SectionBlogCarousel = ({
       <CarouselBlogs
         className="mt-10"
         emblaRef={emblaRef}
-        posts={blogs}
+        posts={posts}
       />
     </div>
   )

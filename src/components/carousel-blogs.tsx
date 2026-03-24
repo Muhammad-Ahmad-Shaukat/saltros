@@ -1,13 +1,13 @@
 'use client'
 
-import { getBlogPosts } from '@/lib/static-data'
+import { BlogPost } from '@/lib/blog'
 import clsx from 'clsx'
 import { EmblaViewportRefType } from 'embla-carousel-react'
 import BlogPostCart from './blog-post-cart'
 import { motion } from 'framer-motion'
 
 interface CarouselBlogsProps {
-  posts: ReturnType<typeof getBlogPosts>
+  posts: BlogPost[]
   className?: string
   emblaRef: EmblaViewportRefType
 }
